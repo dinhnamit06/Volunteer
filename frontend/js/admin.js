@@ -703,7 +703,8 @@ function switchTab(tabId, el) {
         const navMap = {
             'overview': 'nav-overview',
             'manage-events': 'nav-events',
-            'checkin': 'nav-checkin'
+            'checkin': 'nav-checkin',
+            'members': 'nav-members'
         };
         const navEl = document.getElementById(navMap[tabId]);
         if (navEl) navEl.classList.add('active');
@@ -726,6 +727,21 @@ function switchTab(tabId, el) {
     }
 
     if (tabId === 'members') loadStudents();
+
+    // Close sidebar on mobile after switching tab
+    if (window.innerWidth <= 992) {
+        const sidebar = document.getElementById('admin-sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        if (sidebar) sidebar.classList.remove('active');
+        if (overlay) overlay.classList.remove('active');
+    }
+}
+
+function toggleSidebar() {
+    const sidebar = document.getElementById('admin-sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    if (sidebar) sidebar.classList.toggle('active');
+    if (overlay) overlay.classList.toggle('active');
 }
 
 function showToast(title, message, type) {
