@@ -6,7 +6,17 @@ const PORT = process.env.PORT || 5000;
 
 const apiRoutes = require('./src/routes/index');
 
-app.use(cors());
+app.use(cors({
+    origin: [
+        'http://localhost:5000',
+        'http://127.0.0.1:5000',
+        'https://dinhnamit06.github.io',
+        'https://jade-treacle-32d00e.netlify.app'
+    ],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 app.use(express.static('frontend'));
 
