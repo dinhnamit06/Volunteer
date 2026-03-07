@@ -212,7 +212,8 @@ async function createEvent(e) {
 async function deleteEvent(id) {
     if (!confirm("Bạn có chắc chắn muốn xóa sự kiện này?")) return;
     try {
-        const res = await fetch(`/api/events/${id}`, { method: 'DELETE' });
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        const res = await fetch(apiUrl + `/api/events/${id}`, { method: 'DELETE' });
         if (res.ok) {
             showToast("Thành công", "Đã xóa sự kiện", "success");
             loadEvents();
@@ -349,7 +350,8 @@ async function loadCheckins() {
 
 async function changeParticipantRole(eventId, studentId, role) {
     try {
-        const res = await fetch(`/api/admin/events/${eventId}/participants/${studentId}/role`, {
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        const res = await fetch(apiUrl + `/api/admin/events/${eventId}/participants/${studentId}/role`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ requester_id: currentUser.id, role })
@@ -376,7 +378,8 @@ async function loadStudents() {
     tableBody.innerHTML = '<tr><td colspan="5" class="text-center py-4"><div class="spinner"></div></td></tr>';
 
     try {
-        let url = '/api/admin/students';
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        let url = apiUrl + '/api/admin/students';
         const yearSelect = document.getElementById('filter-year');
         const semSelect = document.getElementById('filter-semester');
 
@@ -452,7 +455,8 @@ async function submitPoints() {
     if (!amount || !reason) return showToast("Lỗi", "Vui lòng nhập đầy đủ thông tin", "warning");
 
     try {
-        const res = await fetch(`/api/admin/students/${userId}/add-points`, {
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        const res = await fetch(apiUrl + `/api/admin/students/${userId}/add-points`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ requester_id: currentUser.id, amount, reason })
@@ -480,7 +484,8 @@ async function viewPointsHistory(userId, userName) {
     document.getElementById('history-points-modal').style.display = 'flex';
 
     try {
-        const res = await fetch(`/api/admin/students/${userId}/points-history`);
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        const res = await fetch(apiUrl + `/api/admin/students/${userId}/points-history`);
         const data = await res.json();
 
         if (data.length === 0) {
@@ -511,7 +516,8 @@ let currentCertificateFilename = "Chung_Chi_Phenikaa.png";
 
 async function viewCertificate(studentId, eventId) {
     try {
-        const res = await fetch(`/api/admin/students/${studentId}/certificate/${eventId}`);
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        const res = await fetch(apiUrl + `/api/admin/students/${studentId}/certificate/${eventId}`);
         if (!res.ok) {
             const err = await res.json();
             return showToast("Lỗi", err.message || "Không thể tải chứng chỉ", "danger");
