@@ -410,10 +410,115 @@
             color: var(--text-main);
         }
 
-        /* Responsive Layout */
-        @media (max-width: 1100px) {
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 992px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                padding-bottom: 0;
+            }
+
+            .sidebar-header {
+                padding: 15px 20px;
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: space-between;
+            }
+
+            .sidebar-header img {
+                margin-bottom: 0 !important;
+                max-width: 120px !important;
+            }
+
+            .sidebar-nav {
+                display: flex;
+                overflow-x: auto;
+                padding: 5px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-item {
+                padding: 12px 15px;
+                white-space: nowrap;
+                border-left: none;
+                border-bottom: 3px solid transparent;
+                font-size: 13px;
+                gap: 8px;
+            }
+
+            .nav-item svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .nav-item:hover,
+            .nav-item.active {
+                border-left-color: transparent;
+                border-bottom-color: var(--primary-light);
+                background: transparent;
+            }
+
+            .sidebar-footer {
+                padding: 10px 20px;
+                background: rgba(0, 0, 0, 0.1);
+            }
+
+            .main-content {
+                margin-left: 0;
+                max-width: 100%;
+                padding: 20px 15px;
+            }
+
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .page-title {
+                font-size: 24px;
+            }
+
             .dashboard-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .create-btn {
+                padding: 12px;
+            }
+
+            .stat-card {
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .stat-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+
+            .stat-info .stat-value {
+                font-size: 24px;
+            }
+
+            /* Responsive Utilities */
+            .table-responsive {
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin-top: 10px;
             }
         }
     </style>
@@ -424,7 +529,7 @@
     <!-- Sidebar -->
     <aside class="sidebar">
         <div class="sidebar-header" style="flex-direction: column; align-items: flex-start;">
-            <img src="assets/images.png" alt="Phenikaa University"
+            <img src="assets/logo-Phenikaa-w.png" alt="Phenikaa University"
                 style="max-width: 160px; margin-bottom: 15px; background: white; padding: 5px; border-radius: 4px;">
             <span style="font-size: 16px; opacity: 0.8; letter-spacing: 1px;">Admin Dashboard</span>
         </div>
