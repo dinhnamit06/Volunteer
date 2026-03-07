@@ -461,9 +461,9 @@
                 display: none !important;
                 width: 280px;
                 height: 100vh;
-                position: fixed;
-                top: 0;
-                left: 0;
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
                 z-index: 1200;
                 box-shadow: 6px 0 30px rgba(0, 0, 0, 0.35);
                 flex-direction: column;
@@ -494,7 +494,6 @@
             /* --- Main Content --- */
             body {
                 flex-direction: column;
-                overflow-x: hidden;
             }
 
             .main-content {
@@ -502,6 +501,7 @@
                 max-width: 100%;
                 padding: 68px 12px 24px;
                 /* 56px header + 12px gap */
+                overflow-x: hidden;
             }
 
             .page-header {
