@@ -35,9 +35,10 @@ class Student extends User {
 
     async scanQRCode(qrCode) {
         const [rows] = await db.promise().query(
-            `SELECT r.RegistrationId as reg_id, e.SecretKey as secret_key, e.DateTime as start_time FROM registration r 
+            `SELECT r.RegistrationId as reg_id, q.ValidationData as secret_key, e.DateTime as start_time FROM registration r 
             JOIN event e ON r.EventId = e.EventId 
-            WHERE r.StudentId = ? AND e.SecretKey = ? AND r.Status = 'CONFIRMED'`,
+            JOIN qrcode q ON e.EventId = q.EventId
+            WHERE r.StudentId = ? AND q.ValidationData = ? AND r.Status = 'CONFIRMED'`,
             [this.userId, qrCode]
         );
 
