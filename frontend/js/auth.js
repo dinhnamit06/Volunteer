@@ -113,6 +113,12 @@ async function handleAuth(e) {
         return;
     }
 
+    // Password length validation
+    if (password.length < 8) {
+        showError('form-error', 'Mật khẩu phải có ít nhất 8 ký tự');
+        return;
+    }
+
     // Use global baseUrl defined in HTML or default to Render url
     const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
 
