@@ -230,7 +230,8 @@ async function showQR() {
     container.style.display = 'block';
 
     try {
-        const res = await fetch(`/api/events/qr/${eventId}`);
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        const res = await fetch(apiUrl + `/api/events/qr/${eventId}`);
         const data = await res.json();
         if (res.ok) {
             container.innerHTML = `
@@ -254,7 +255,8 @@ async function loadCheckins() {
     }
 
     try {
-        const res = await fetch(`/api/events/${eventId}/checkins`);
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        const res = await fetch(apiUrl + `/api/events/${eventId}/checkins`);
         const data = await res.json();
 
         if (!data || data.length === 0) {
@@ -643,12 +645,13 @@ function filterMembers() {
     renderMembers(filtered);
 }
 
-async function exportAttendance() {
+async function exportExcel() {
     const eventId = document.getElementById('event-select').value;
-    if (!eventId) return showToast("Lỗi", "Vui lòng chọn sự kiện", "danger");
+    if (!eventId) return showToast("Chú ý", "Bạn chưa chọn sự kiện nào", "warning");
 
     try {
-        const res = await fetch(`/api/events/${eventId}/checkins`);
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        const res = await fetch(apiUrl + `/api/events/${eventId}/checkins`);
         const data = await res.json();
 
         let csvContent = "\uFEFF"; // BOM for UTF-8 Excel support
