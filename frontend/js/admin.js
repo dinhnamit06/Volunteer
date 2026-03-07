@@ -81,7 +81,8 @@ function initializeFilters() {
 
 async function loadStats() {
     try {
-        let url = '/api/dashboard/stats';
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        let url = apiUrl + '/api/dashboard/stats';
         const yearSelect = document.getElementById('overview-filter-year');
         const semSelect = document.getElementById('overview-filter-semester');
 
@@ -113,7 +114,8 @@ function animateValue(id, start, end, duration) {
 
 async function loadEvents() {
     try {
-        let url = '/api/events';
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        let url = apiUrl + '/api/events';
         const yearSelect = document.getElementById('overview-filter-year');
         const semSelect = document.getElementById('overview-filter-semester');
 

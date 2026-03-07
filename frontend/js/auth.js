@@ -113,11 +113,14 @@ async function handleAuth(e) {
         return;
     }
 
+    // Use global baseUrl defined in HTML or default to Render url
+    const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+
     let payload = { email, password };
-    let endpoint = '/api/login';
+    let endpoint = apiUrl + '/api/login';
 
     if (!isLoginMode) {
-        endpoint = '/api/register';
+        endpoint = apiUrl + '/api/register';
         payload.name = document.getElementById('reg-name').value.trim();
         if (!payload.name) {
             showError('form-error', 'Vui lòng nhập họ và tên');
