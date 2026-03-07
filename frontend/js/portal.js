@@ -101,7 +101,8 @@ async function loadEvents() {
 
 async function loadHistory() {
     try {
-        const res = await fetch(`/api/users/${currentUser.id}/history`);
+        const apiUrl = 'https://volunteer-iavw.onrender.com';
+        const res = await fetch(apiUrl + `/api/users/${currentUser.id}/history`);
         const history = await res.json();
         const container = document.getElementById('history-body');
 
@@ -205,7 +206,8 @@ function startQRScan() {
     qrScanner = new Html5QrcodeScanner("qr-reader", {
         fps: 10,
         qrbox: { width: 250, height: 250 },
-        supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
+        supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
+        videoConstraints: { facingMode: { exact: "environment" } } // Updated to use exact environment camera
     });
     qrScanner.render(onScanSuccess, onScanError);
 }
@@ -260,7 +262,8 @@ async function openProfile() {
         }
 
         console.log("Fetching profile for user ID:", currentUser.id);
-        const res = await fetch(`/api/profile/${currentUser.id}`);
+        const apiUrl = 'https://volunteer-iavw.onrender.com';
+        const res = await fetch(apiUrl + `/api/profile/${currentUser.id}`);
         const user = await res.json();
         console.log("Profile response:", res.status, user);
 
@@ -309,7 +312,8 @@ async function updateProfile(e) {
     };
 
     try {
-        const res = await fetch(`/api/profile/${currentUser.id}`, {
+        const apiUrl = 'https://volunteer-iavw.onrender.com';
+        const res = await fetch(apiUrl + `/api/profile/${currentUser.id}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
@@ -356,7 +360,8 @@ let currentCertificateFilename = "Chung_Chi_Phenikaa.png";
 async function viewCertificate(eventId) {
     try {
         const studentId = currentUser.id;
-        const res = await fetch(`/api/admin/students/${studentId}/certificate/${eventId}`);
+        const apiUrl = 'https://volunteer-iavw.onrender.com';
+        const res = await fetch(apiUrl + `/api/admin/students/${studentId}/certificate/${eventId}`);
         if (!res.ok) {
             const err = await res.json();
             return showToast("Lỗi", err.message || "Không thể tải chứng chỉ", "danger");
