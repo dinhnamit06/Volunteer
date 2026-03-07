@@ -540,7 +540,7 @@ body {
         min-height: 100vh;
     }
 
-    .sidebar {
+    .sidebar:not(#admin-sidebar) {
         width: 100% !important;
         height: auto !important;
         position: relative !important;
