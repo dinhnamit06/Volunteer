@@ -771,7 +771,7 @@
                     <option value="All">Tất cả học kỳ</option>
                     <option value="1">Học kỳ 1</option>
                     <option value="2">Học kỳ 2</option>
-                    <option value="3">Học kỳ 3 (Hè)</option>
+                    <option value="3">Học kỳ 3</option>
                 </select>
             </div>
 
@@ -995,16 +995,20 @@
                             <option value="2">Học kỳ 2</option>
                             <option value="3">Học kỳ 3 </option>
                         </select>
-                        <div style="position: relative; width: 300px;">
-                            <input type="text" id="member-search" class="form-control"
-                                placeholder="Tìm theo tên, MSV..." onkeyup="filterMembers()"
-                                style="padding-left: 35px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2"
-                                style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted)">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
+                        <div style="display: flex; gap: 8px; align-items: center; width: 100%; max-width: 400px;">
+                            <div style="position: relative; flex: 1;">
+                                <input type="text" id="member-search" class="form-control"
+                                    placeholder="Tìm theo tên, MSV..." onkeyup="filterMembers()"
+                                    style="padding-left: 35px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2"
+                                    style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted)">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                            </div>
+                            <button class="btn-custom btn-primary" onclick="filterMembers()"
+                                style="padding: 8px 16px; white-space: nowrap; font-size: 14px;">Tìm kiếm</button>
                         </div>
                     </div>
                 </div>
