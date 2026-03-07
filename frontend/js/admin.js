@@ -184,7 +184,7 @@ async function createEvent(e) {
     };
 
     try {
-        const res = await fetch('/api/events', {
+        const res = await fetch('https://volunteer-iavw.onrender.com/api/events', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
@@ -593,7 +593,7 @@ function downloadCertificateImage() {
 async function promoteStaff(userId) {
     if (!confirm("Bạn có chắc chắn muốn phong thành viên này làm Staff?")) return;
     try {
-        const res = await fetch('/api/admin/promote-staff', {
+        const res = await fetch('https://volunteer-iavw.onrender.com/api/admin/promote-staff', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ requester_id: currentUser.id, target_user_id: userId })
@@ -613,7 +613,7 @@ async function promoteStaff(userId) {
 async function deleteUser(userId) {
     if (!confirm("Bạn có chắc chắn muốn XOÁ tài khoản này? Thao tác này không thể hoàn tác!")) return;
     try {
-        const res = await fetch('/api/admin/delete-user', {
+        const res = await fetch('https://volunteer-iavw.onrender.com/api/admin/delete-user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ requester_id: currentUser.id, target_user_id: userId })

@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('user-name').textContent = currentUser.name || "Sinh viên";
 
     // Fetch dynamic points instead of relying on localStorage
-    fetch(`/api/profile/${currentUser.id}`)
+    fetch(`https://volunteer-iavw.onrender.com/api/profile/${currentUser.id}`)
         .then(res => res.json())
         .then(user => {
             document.getElementById('extra-points').textContent = user.extracurricular_points || 0;
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadEvents() {
     try {
-        const res = await fetch('/api/events');
+        const res = await fetch('https://volunteer-iavw.onrender.com/api/events');
         const events = await res.json();
         const eventList = document.getElementById('event-list');
 
@@ -161,7 +161,7 @@ async function submitFeedback(e) {
         comment: document.getElementById('feedback-comment').value
     };
     try {
-        const res = await fetch(`/api/events/${eventId}/feedbacks`, {
+        const res = await fetch(`https://volunteer-iavw.onrender.com/api/events/${eventId}/feedbacks`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(padding)
@@ -181,7 +181,7 @@ async function submitFeedback(e) {
 async function registerEvent(eventId) {
     if (!confirm('Bạn có chắc chắn muốn đăng ký tham gia hoạt động này không?')) return;
     try {
-        const res = await fetch('/api/register-event', {
+        const res = await fetch('https://volunteer-iavw.onrender.com/api/register-event', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ user_id: currentUser.id, event_id: eventId })
@@ -213,7 +213,7 @@ function startQRScan() {
 async function onScanSuccess(decodedText) {
     if (qrScanner) qrScanner.clear();
     try {
-        const res = await fetch('/api/attendance/scan', {
+        const res = await fetch('https://volunteer-iavw.onrender.com/api/attendance/scan', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ user_id: currentUser.id, qr_code: decodedText })
