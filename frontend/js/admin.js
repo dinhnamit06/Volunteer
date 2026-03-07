@@ -193,6 +193,7 @@ async function createEvent(e) {
         if (res.ok) {
             showToast("Thành công", "Đã tạo sự kiện mới", "success");
             e.target.reset();
+            closeModal('event-modal');
             loadEvents();
             loadStats();
         } else {
