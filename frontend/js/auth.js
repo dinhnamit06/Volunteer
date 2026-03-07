@@ -12,8 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = isStaff ? 'admin.html' : 'index.html';
     }
 
-    // Initialize Google Token Client
-    if (typeof google !== 'undefined') {
+    // Try to initialize immediately if already loaded
+    initGoogleAuth();
+});
+
+// Polyfill/safe-init for Google Auth since the script loads async
+function initGoogleAuth() {
+    if (typeof google !== 'undefined' && !googleTokenClient) {
         googleTokenClient = google.accounts.oauth2.initTokenClient({
             client_id: '227906357190-l070ghrsh0ojq3gh2noh3t93j14mtcms.apps.googleusercontent.com',
             scope: 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile',
@@ -24,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
         });
     }
-});
+}
 
 function togglePassword(iconId, inputId) {
     const passInput = document.getElementById(inputId);
@@ -173,6 +178,9 @@ async function loginWithGoogle() {
     btn.disabled = true;
 
     try {
+        if (!googleTokenClient) {
+            initGoogleAuth();
+        }
         if (!googleTokenClient) {
             throw new Error("Google Identity Services not loaded.");
         }
