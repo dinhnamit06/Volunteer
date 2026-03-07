@@ -458,19 +458,19 @@
 
             /* --- Sidebar Drawer --- */
             .sidebar {
+                display: none !important;
                 width: 280px;
                 height: 100vh;
                 position: fixed;
                 top: 0;
-                left: -280px;
+                left: 0;
                 z-index: 1200;
-                transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                box-shadow: none;
+                box-shadow: 6px 0 30px rgba(0, 0, 0, 0.35);
+                flex-direction: column;
             }
 
             .sidebar.active {
-                left: 0;
-                box-shadow: 6px 0 30px rgba(0, 0, 0, 0.35);
+                display: flex !important;
             }
 
             /* --- Dark Overlay --- */
