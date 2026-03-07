@@ -228,11 +228,11 @@ async function processGoogleLoginBackend(email, name) {
         return;
     }
 
-    // Fallback to localhost:5000 if opened directly via file://
-    const baseUrl = window.location.protocol === 'file:' ? 'http://localhost:5000' : '';
+    // Use global baseUrl defined in HTML or default to Render url
+    const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
 
     try {
-        const response = await fetch(baseUrl + '/api/google-login', {
+        const response = await fetch(apiUrl + '/api/google-login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, name })
