@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phenikaa Volunteer - Auth</title>
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        /* Auth Specific Styles OVERRIDING default */
+        body {
+            background: linear-gradient(135deg, #1d336a 0%, #172754 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+            padding: 40px 20px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            position: relative;
+        }
+
+        .auth-logo-top {
+            margin-bottom: 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .auth-logo-top img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 450px;
+            padding: 40px;
+            background: #dce5f9;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 10;
+        }
+
+        .paper-plane-icon {
+            position: absolute;
+            top: -55px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            color: #3b82f6;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .auth-header h2 {
+            font-size: 26px;
+            font-weight: 800;
+            margin-top: 10px;
+            margin-bottom: 30px;
+            color: #1a3066;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+
+        .form-group label {
+            display: none;
+        }
+
+        .input-icon-wrapper {
+            position: relative;
+            margin-bottom: 18px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 15px 14px 45px;
+            background: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #374151;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: transparent;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+            width: 18px;
+            height: 18px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #9ca3af;
+        }
+
+        .form-actions-link {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .form-actions-link a,
+        .form-actions-link span {
+            color: #4b5563;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .form-actions-link a:hover {
+            color: #1e3a8a;
+        }
+
+        .btn-auth {
+            width: 100%;
+            padding: 14px;
+            background: #25396f;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .btn-auth:hover {
+            background: #16254a;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(37, 57, 111, 0.3);
+        }
+
+        .divider {
+            position: relative;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .divider::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+            background: #d1d5db;
+            z-index: 1;
+        }
+
+        .divider span {
+            position: relative;
+            background: rgba(219, 234, 254, 1);
+            padding: 0 15px;
+            font-size: 12px;
+            color: #6b7280;
+            z-index: 2;
+        }
+
+        .btn-microsoft {
+            width: 100%;
+            padding: 12px;
+            background: #005a9e;
+            /* MS Blue */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-microsoft:hover {
+            background: #004a87;
+        }
+
+        .btn-microsoft img {
+            width: 20px;
+        }
+
+        .toggle-mode {
+            text-align: center;
+            margin-top: 25px;
+            color: #4b5563;
+        }
+
+        .toggle-mode span {
+            color: #1e3a8a;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .hidden-fields {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .hidden-fields.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .alert-text {
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 13px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .alert-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
+        .alert-success {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="auth-logo-top">
+        <img src="assets/images.png" alt="Phenikaa Volunteer" class="logo">
+    </div>
+
+    <div class="auth-card animate-fade-in-up">
+        <div class="paper-plane-icon">
+            <svg style="position: absolute; top: 15px; left: -10px; width: 140px; height: 100px; overflow: visible;">
+                <path d="M 20 80 Q 90 60 85 30" fill="none" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="4,4"
+                    opacity="0.6" />
+            </svg>
+            <svg width="45" height="45" viewBox="0 0 24 24" fill="#93c5fd" stroke="#3b82f6" stroke-width="1"
+                stroke-linecap="round" stroke-linejoin="round"
+                style="position: relative; z-index: 2; transform: rotate(15deg) translateY(-8px) translateX(25px);">
+                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path>
+            </svg>
+        </div>
+
+        <div class="auth-header">
+            <h2 id="auth-title">Đăng Nhập</h2>
+        </div>
+
+        <form id="auth-form" onsubmit="handleAuth(event)" autocomplete="off">
+            <!-- Registration Only Fields -->
+            <div id="register-fields" class="hidden-fields">
+                <div class="input-icon-wrapper">
+                    <input type="text" id="reg-name" class="form-control" placeholder="Họ và tên của bạn"
+                        autocomplete="off">
+                    <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Common Fields -->
+            <div class="input-icon-wrapper">
+                <input type="email" id="email" class="form-control"
+                    placeholder="Nhập email trường (@st.phenikaa-uni.edu.vn)" required autocomplete="off">
+                <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+            </div>
+
+            <div class="input-icon-wrapper">
+                <input type="password" id="password" class="form-control" placeholder="Nhập mật khẩu" required
+                    autocomplete="new-password">
+                <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+
+                <span class="toggle-password" id="toggle-pw-icon"
+                    onclick="togglePassword('toggle-pw-icon', 'password')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </span>
+            </div>
+
+            <div class="form-actions-link" id="login-extras">
+                <a href="#">Quên mật khẩu</a>
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 3px;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>Trợ giúp!</span>
+            </div>
+
+            <button type="submit" id="submit-btn" class="btn-auth">ĐĂNG NHẬP</button>
+
+            <div class="toggle-mode" id="auth-mode-toggle">
+                Bạn chưa có tài khoản? <span onclick="toggleAuthMode()">Đăng ký ngay</span>
+            </div>
+
+            <div class="divider">
+                <span>Hoặc đăng nhập</span>
+            </div>
+
+            <button type="button" class="btn-google" id="google-login-btn" onclick="loginWithGoogle()">
+                <svg width="20" height="20" viewBox="0 0 48 48" style="margin-right: 10px;">
+                    <path fill="#EA4335"
+                        d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z">
+                    </path>
+                    <path fill="#4285F4"
+                        d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z">
+                    </path>
+                    <path fill="#FBBC05"
+                        d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z">
+                    </path>
+                    <path fill="#34A853"
+                        d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z">
+                    </path>
+                    <path fill="none" d="M0 0h48v48H0z"></path>
+                </svg>
+                <span>Sign in using Google</span>
+            </button>
+
+            <div class="alert-text alert-error" id="form-error"></div>
+            <div class="alert-text alert-success" id="form-success"></div>
+            <div class="alert-text alert-error" id="email-error"></div>
+        </form>
+
+
+        <!-- Google Identity Services -->
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+        <script src="js/auth.js"></script>
+</body>
+
+</html>
