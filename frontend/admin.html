@@ -659,7 +659,7 @@
             .qr-container {
                 width: 100% !important;
                 max-width: 100%;
-                overflow: hidden;
+                overflow: visible;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -668,6 +668,25 @@
             .qr-image {
                 max-width: 100% !important;
                 height: auto !important;
+            }
+
+            /* --- Horizontal Scrollable Tables --- */
+            .table-responsive {
+                display: block;
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                border-radius: var(--radius-md);
+                box-shadow: var(--shadow-sm);
+                background: white;
+                margin-top: 10px;
+            }
+
+            .table-responsive .table-custom th,
+            .table-responsive .table-custom td {
+                white-space: nowrap;
+                padding: 10px 12px;
+                font-size: 13px;
             }
         }
     </style>
