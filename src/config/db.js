@@ -7,7 +7,7 @@ const db = mysql.createConnection({
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
     port: process.env.DB_PORT || 4000,
-    // TiDB Cloud Serverless requires SSL
+    // TiDB Cloud requires SSL
     ssl: {
         minVersion: 'TLSv1.2',
         rejectUnauthorized: true

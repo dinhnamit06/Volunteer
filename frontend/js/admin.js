@@ -644,9 +644,10 @@ async function deleteUser(userId) {
 function filterMembers() {
     const query = document.getElementById('member-search').value.toLowerCase();
     const filtered = allMembers.filter(m =>
-        m.name.toLowerCase().includes(query) ||
-        m.msv.toLowerCase().includes(query) ||
-        (m.class && m.class.toLowerCase().includes(query))
+        (m.name || '').toString().toLowerCase().includes(query) ||
+        (m.msv || '').toString().toLowerCase().includes(query) ||
+        (m.class || '').toString().toLowerCase().includes(query) ||
+        (m.email || '').toString().toLowerCase().includes(query)
     );
     renderMembers(filtered);
 }
