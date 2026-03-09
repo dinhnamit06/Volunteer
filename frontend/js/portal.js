@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('user-name').textContent = currentUser.name || "Sinh viên";
 
     // Fetch dynamic points instead of relying on localStorage
-    fetch(`https://volunteer-iavw.onrender.com/api/profile/${currentUser.id}`)
+    fetch(`https://volunteer-management-05dn.onrender.com/api/profile/${currentUser.id}`)
         .then(res => res.json())
         .then(user => {
             document.getElementById('extra-points').textContent = user.extracurricular_points || 0;
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadEvents() {
     try {
-        const res = await fetch('https://volunteer-iavw.onrender.com/api/events');
+        const res = await fetch('https://volunteer-management-05dn.onrender.com/api/events');
         const events = await res.json();
         const eventList = document.getElementById('event-list');
 
@@ -101,7 +101,7 @@ async function loadEvents() {
 
 async function loadHistory() {
     try {
-        const apiUrl = 'https://volunteer-iavw.onrender.com';
+        const apiUrl = 'https://volunteer-management-05dn.onrender.com';
         const res = await fetch(apiUrl + `/api/users/${currentUser.id}/history`);
         const history = await res.json();
         const container = document.getElementById('history-body');
@@ -162,7 +162,7 @@ async function submitFeedback(e) {
         comment: document.getElementById('feedback-comment').value
     };
     try {
-        const res = await fetch(`https://volunteer-iavw.onrender.com/api/events/${eventId}/feedbacks`, {
+        const res = await fetch(`https://volunteer-management-05dn.onrender.com/api/events/${eventId}/feedbacks`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(padding)
@@ -182,7 +182,7 @@ async function submitFeedback(e) {
 async function registerEvent(eventId) {
     if (!confirm('Bạn có chắc chắn muốn đăng ký tham gia hoạt động này không?')) return;
     try {
-        const res = await fetch('https://volunteer-iavw.onrender.com/api/register-event', {
+        const res = await fetch('https://volunteer-management-05dn.onrender.com/api/register-event', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ user_id: currentUser.id, event_id: eventId })
@@ -215,7 +215,7 @@ function startQRScan() {
 async function onScanSuccess(decodedText) {
     if (qrScanner) qrScanner.clear();
     try {
-        const res = await fetch('https://volunteer-iavw.onrender.com/api/attendance/scan', {
+        const res = await fetch('https://volunteer-management-05dn.onrender.com/api/attendance/scan', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ user_id: currentUser.id, qr_code: decodedText })
@@ -262,7 +262,7 @@ async function openProfile() {
         }
 
         console.log("Fetching profile for user ID:", currentUser.id);
-        const apiUrl = 'https://volunteer-iavw.onrender.com';
+        const apiUrl = 'https://volunteer-management-05dn.onrender.com';
         const res = await fetch(apiUrl + `/api/profile/${currentUser.id}`);
         const user = await res.json();
         console.log("Profile response:", res.status, user);
@@ -312,7 +312,7 @@ async function updateProfile(e) {
     };
 
     try {
-        const apiUrl = 'https://volunteer-iavw.onrender.com';
+        const apiUrl = 'https://volunteer-management-05dn.onrender.com';
         const res = await fetch(apiUrl + `/api/profile/${currentUser.id}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -360,7 +360,7 @@ let currentCertificateFilename = "Chung_Chi_Phenikaa.png";
 async function viewCertificate(eventId) {
     try {
         const studentId = currentUser.id;
-        const apiUrl = 'https://volunteer-iavw.onrender.com';
+        const apiUrl = 'https://volunteer-management-05dn.onrender.com';
         const res = await fetch(apiUrl + `/api/admin/students/${studentId}/certificate/${eventId}`);
         if (!res.ok) {
             const err = await res.json();

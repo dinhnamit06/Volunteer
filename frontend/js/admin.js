@@ -81,7 +81,7 @@ function initializeFilters() {
 
 async function loadStats() {
     try {
-        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-management-05dn.onrender.com';
         let url = apiUrl + '/api/dashboard/stats';
         const yearSelect = document.getElementById('overview-filter-year');
         const semSelect = document.getElementById('overview-filter-semester');
@@ -114,7 +114,7 @@ function animateValue(id, start, end, duration) {
 
 async function loadEvents() {
     try {
-        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-management-05dn.onrender.com';
         let url = apiUrl + '/api/events';
         const yearSelect = document.getElementById('overview-filter-year');
         const semSelect = document.getElementById('overview-filter-semester');
@@ -186,7 +186,7 @@ async function createEvent(e) {
     };
 
     try {
-        const res = await fetch('https://volunteer-iavw.onrender.com/api/events', {
+        const res = await fetch('https://volunteer-management-05dn.onrender.com/api/events', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
@@ -212,7 +212,7 @@ async function createEvent(e) {
 async function deleteEvent(id) {
     if (!confirm("Bạn có chắc chắn muốn xóa sự kiện này?")) return;
     try {
-        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-management-05dn.onrender.com';
         const res = await fetch(apiUrl + `/api/events/${id}`, { method: 'DELETE' });
         if (res.ok) {
             showToast("Thành công", "Đã xóa sự kiện", "success");
@@ -231,7 +231,7 @@ async function showQR() {
     container.style.display = 'block';
 
     try {
-        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-management-05dn.onrender.com';
         const res = await fetch(apiUrl + `/api/events/qr/${eventId}`);
         const data = await res.json();
         if (res.ok) {
@@ -256,7 +256,7 @@ async function loadCheckins() {
     }
 
     try {
-        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-management-05dn.onrender.com';
         const res = await fetch(apiUrl + `/api/events/${eventId}/checkins`);
         const data = await res.json();
 
@@ -350,7 +350,7 @@ async function loadCheckins() {
 
 async function changeParticipantRole(eventId, studentId, role) {
     try {
-        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-management-05dn.onrender.com';
         const res = await fetch(apiUrl + `/api/admin/events/${eventId}/participants/${studentId}/role`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -378,7 +378,7 @@ async function loadStudents() {
     tableBody.innerHTML = '<tr><td colspan="5" class="text-center py-4"><div class="spinner"></div></td></tr>';
 
     try {
-        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-management-05dn.onrender.com';
         let url = apiUrl + '/api/admin/students';
         const yearSelect = document.getElementById('filter-year');
         const semSelect = document.getElementById('filter-semester');
@@ -455,7 +455,7 @@ async function submitPoints() {
     if (!amount || !reason) return showToast("Lỗi", "Vui lòng nhập đầy đủ thông tin", "warning");
 
     try {
-        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-management-05dn.onrender.com';
         const res = await fetch(apiUrl + `/api/admin/students/${userId}/add-points`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -484,7 +484,7 @@ async function viewPointsHistory(userId, userName) {
     document.getElementById('history-points-modal').style.display = 'flex';
 
     try {
-        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-management-05dn.onrender.com';
         const res = await fetch(apiUrl + `/api/admin/students/${userId}/points-history`);
         const data = await res.json();
 
@@ -516,7 +516,7 @@ let currentCertificateFilename = "Chung_Chi_Phenikaa.png";
 
 async function viewCertificate(studentId, eventId) {
     try {
-        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-management-05dn.onrender.com';
         const res = await fetch(apiUrl + `/api/admin/students/${studentId}/certificate/${eventId}`);
         if (!res.ok) {
             const err = await res.json();
@@ -604,7 +604,7 @@ function downloadCertificateImage() {
 async function promoteStaff(userId) {
     if (!confirm("Bạn có chắc chắn muốn phong thành viên này làm Staff?")) return;
     try {
-        const res = await fetch('https://volunteer-iavw.onrender.com/api/admin/promote-staff', {
+        const res = await fetch('https://volunteer-management-05dn.onrender.com/api/admin/promote-staff', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ requester_id: currentUser.id, target_user_id: userId })
@@ -624,7 +624,7 @@ async function promoteStaff(userId) {
 async function deleteUser(userId) {
     if (!confirm("Bạn có chắc chắn muốn XOÁ tài khoản này? Thao tác này không thể hoàn tác!")) return;
     try {
-        const res = await fetch('https://volunteer-iavw.onrender.com/api/admin/delete-user', {
+        const res = await fetch('https://volunteer-management-05dn.onrender.com/api/admin/delete-user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ requester_id: currentUser.id, target_user_id: userId })
@@ -657,7 +657,7 @@ async function exportExcel() {
     if (!eventId) return showToast("Chú ý", "Bạn chưa chọn sự kiện nào", "warning");
 
     try {
-        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-management-05dn.onrender.com';
         const res = await fetch(apiUrl + `/api/events/${eventId}/checkins`);
         const data = await res.json();
 

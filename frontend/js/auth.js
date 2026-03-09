@@ -120,7 +120,7 @@ async function handleAuth(e) {
     }
 
     // Use global baseUrl defined in HTML or default to Render url
-    const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+    const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-management-05dn.onrender.com';
 
     let payload = { email, password };
     let endpoint = apiUrl + '/api/login';
@@ -238,7 +238,7 @@ async function processGoogleLoginBackend(email, name) {
     }
 
     // Use global baseUrl defined in HTML or default to Render url
-    const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-iavw.onrender.com';
+    const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-management-05dn.onrender.com';
 
     try {
         const response = await fetch(apiUrl + '/api/google-login', {
