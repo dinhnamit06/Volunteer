@@ -280,15 +280,16 @@ async function loadCheckins() {
             <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:15px; border-bottom:1px solid #e2e8f0; padding-bottom:5px;">
                 <h3 style="font-size:16px; color:var(--text-main); margin:0;">Danh sách đã đăng ký (${registered.length})</h3>
             </div>
-            <table class="table-custom animate-fade-in-up">
-                <thead>
-                    <tr>
-                        <th>Tên / MSV</th>
-                        <th>Trạng thái</th>
-                        <th>Vai trò</th>
-                        <th>Thời gian ĐK</th>
-                    </tr>
-                </thead>
+            <div style="overflow-x: auto;">
+                <table class="table-custom animate-fade-in-up" style="min-width: 600px;">
+                    <thead>
+                        <tr>
+                            <th>Tên / MSV</th>
+                            <th>Trạng thái</th>
+                            <th>Vai trò</th>
+                            <th>Thời gian ĐK</th>
+                        </tr>
+                    </thead>
                 <tbody>
                     ${registered.length === 0 ? '<tr><td colspan="4" class="text-center text-muted py-3">Không có.</td></tr>' : registered.map(c => `
                         <tr>
@@ -313,16 +314,17 @@ async function loadCheckins() {
             <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:30px; border-bottom:1px solid #e2e8f0; padding-bottom:5px;">
                 <h3 style="font-size:16px; color:var(--text-main); margin:0;">Danh sách đã điểm danh (${attended.length})</h3>
             </div>
-            <table class="table-custom animate-fade-in-up">
-                <thead>
-                    <tr>
-                        <th>Tên / MSV</th>
-                        <th>Trạng thái</th>
-                        <th>Vai trò</th>
-                        <th>Thời gian điểm danh</th>
-                        <th>Thao tác</th>
-                    </tr>
-                </thead>
+            <div style="overflow-x: auto;">
+                <table class="table-custom animate-fade-in-up" style="min-width: 600px;">
+                    <thead>
+                        <tr>
+                            <th>Tên / MSV</th>
+                            <th>Trạng thái</th>
+                            <th>Vai trò</th>
+                            <th>Thời gian điểm danh</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
                 <tbody>
                     ${attended.length === 0 ? '<tr><td colspan="4" class="text-center text-muted py-3">Không có.</td></tr>' : attended.map(c => `
                         <tr>
@@ -349,6 +351,7 @@ async function loadCheckins() {
                     `).join('')}
                 </tbody>
             </table>
+            </div>
         `;
     } catch (error) { container.innerHTML = "Lỗi tải danh sách"; }
 }

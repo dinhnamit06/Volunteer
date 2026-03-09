@@ -147,6 +147,19 @@
             text-transform: uppercase;
         }
 
+        #qr-reader {
+            width: 100% !important;
+            max-width: 100%;
+            border: none !important;
+        }
+
+        #qr-reader video,
+        #qr-reader canvas {
+            width: 100% !important;
+            max-width: 100%;
+            border-radius: var(--radius-md);
+        }
+
         .history-table td {
             padding: 15px;
             border-top: 1px solid #f1f5f9;
@@ -369,7 +382,7 @@
         </div>
         <div style="overflow-x: auto; margin-bottom: 50px;">
             <div class="table-responsive">
-                <table class="history-table">
+                <table class="history-table" style="min-width: 600px;">
                     <thead>
                         <tr>
                             <th>Sự Kiện</th>
