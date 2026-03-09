@@ -232,9 +232,7 @@ async function showQR() {
     if (!eventId) return showToast("Chú ý", "Hãy chọn sự kiện", "warning");
 
     const container = document.getElementById('qr-projector');
-    if (container.innerHTML === "" || container.style.display === 'none') {
-        container.innerHTML = `<div class="qr-placeholder">Đang tạo...</div>`;
-    }
+    container.innerHTML = `<div class="qr-placeholder">Đang tạo...</div>`;
     container.style.display = 'block';
 
     try {
@@ -242,28 +240,11 @@ async function showQR() {
         const res = await fetch(apiUrl + `/api/events/qr/${eventId}`);
         const data = await res.json();
         if (res.ok) {
-            const timeStr = new Date(data.start_time).toLocaleString('vi-VN');
             container.innerHTML = `
-                <div class="qr-container animate-fade-in-up" style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center;">
-                    <div style="margin-bottom: 20px;">
-                        <h2 style="margin: 0 0 5px 0; color: var(--primary-dark); font-size: 22px;">${data.title}</h2>
-                        <div style="font-size: 14px; color: var(--text-muted);">📍 ${data.location} | 📅 ${timeStr}</div>
-                    </div>
-                    
-                    <img src="${data.qr_image_url}" class="qr-image" style="width: 250px; height: 250px; border: 8px solid #f8fafc; border-radius: 12px; margin-bottom: 15px;">
-                    <div class="qr-string" style="font-size: 24px; font-weight: 800; color: var(--primary-color); letter-spacing: 2px;">${data.qr_code}</div>
-                    
-                    <div style="margin: 20px 0; padding: 15px; background: var(--primary-light); border-radius: 10px; display: inline-block; min-width: 200px;">
-                        <div style="font-size: 12px; color: var(--primary-dark); font-weight: 600; text-transform: uppercase;">Trạng thái điểm danh</div>
-                        <div style="font-size: 28px; font-weight: 800; color: var(--primary-dark);">${data.checked_in_count} / ${data.capacity || '---'}</div>
-                    </div>
-                    
-                    <p class="qr-instruction" style="color: var(--text-muted); font-size: 14px;">Quét bằng ứng dụng TNV Phenikaa để điểm danh</p>
-                    
-                    <button onclick="showQR()" class="btn-custom btn-outline" style="margin-top: 10px; font-size: 12px; padding: 5px 15px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 5px; vertical-align: middle;"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
-                        Làm mới trạng thái
-                    </button>
+                <div class="qr-container animate-fade-in-up">
+                    <img src="${data.qr_image_url}" class="qr-image">
+                    <div class="qr-string">${data.qr_code}</div>
+                    <p class="qr-instruction">Quét bằng ứng dụng TNV Phenikaa để điểm danh</p>
                 </div>
             `;
         }

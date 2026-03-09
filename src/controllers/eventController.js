@@ -75,22 +75,7 @@ exports.getEventQr = async (req, res) => {
         if (!event) return res.status(404).json({ message: "Không tìm thấy" });
 
         const qrImage = await event.displayQr();
-
-        // Fetch counts for live status
-        const [counts] = await db.promise().query(
-            "SELECT COUNT(*) as count FROM attendance WHERE EventId = ? AND AttendanceStatus = 'Đã điểm danh'",
-            [req.params.id]
-        );
-
-        res.json({
-            qr_image_url: qrImage,
-            qr_code: event.secretKey,
-            title: event.eventName,
-            start_time: event.dateTime,
-            location: event.location,
-            capacity: event.capacity,
-            checked_in_count: counts[0].count
-        });
+        res.json({ qr_image_url: qrImage, qr_code: event.secretKey });
     } catch (e) {
         res.status(500).json({ message: "Lỗi tạo QR" });
     }
