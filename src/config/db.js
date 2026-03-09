@@ -6,10 +6,11 @@ const db = mysql.createConnection({
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
-    port: process.env.DB_PORT || 3306,
-    // Aiven databases usually require SSL
+    port: process.env.DB_PORT || 4000,
+    // TiDB Cloud Serverless requires SSL
     ssl: {
-        rejectUnauthorized: false
+        minVersion: 'TLSv1.2',
+        rejectUnauthorized: true
     }
 });
 
