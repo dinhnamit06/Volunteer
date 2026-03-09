@@ -652,7 +652,7 @@ function filterMembers() {
     renderMembers(filtered);
 }
 
-async function exportExcel() {
+async function exportCSV() {
     const eventId = document.getElementById('event-select').value;
     if (!eventId) return showToast("Chú ý", "Bạn chưa chọn sự kiện nào", "warning");
 
@@ -662,26 +662,76 @@ async function exportExcel() {
         const data = await res.json();
 
         let csvContent = "\uFEFF"; // BOM for UTF-8 Excel support
-        csvContent += "Ho va Ten,MSV,Trang Thai,Thoi Gian\n";
+        csvContent += "STT,Ho va Ten,MSV,Lop,Nganh Hoc,Vai tro,Trang Thai,Thoi Gian Dang Ky,Thoi Gian Diem Danh\n";
 
-        data.forEach(row => {
-            let name = `"${row.name}"`;
-            let msv = `"${row.student_id}"`;
-            let status = `"${row.attendance_status}"`;
-            let time = row.checkin_time ? `"${new Date(row.checkin_time).toLocaleString('vi-VN')}"` : (row.registered_at ? `"DK: ${new Date(row.registered_at).toLocaleString('vi-VN')}"` : '""');
-            csvContent += `${name},${msv},${status},${time}\n`;
+        data.forEach((row, idx) => {
+            let stt = idx + 1;
+            let name = `"${row.name || ''}"`;
+            let msv = `"${row.student_id || ''}"`;
+            let clazz = `"${row.class || ''}"`;
+            let major = `"${row.major || ''}"`;
+            let role = `"${row.participant_role === 'ORGANIZER' ? 'Ban Tổ Chức' : 'TNV'}"`;
+            let status = `"${row.attendance_status || ''}"`;
+            let regTime = row.registered_at ? `"${new Date(row.registered_at).toLocaleString('vi-VN')}"` : '""';
+            let checkTime = row.checkin_time ? `"${new Date(row.checkin_time).toLocaleString('vi-VN')}"` : '""';
+            csvContent += `${stt},${name},${msv},${clazz},${major},${role},${status},${regTime},${checkTime}\n`;
         });
 
         const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.setAttribute("href", url);
-        link.setAttribute("download", `attendance_report_event_${eventId}.csv`);
+        link.setAttribute("download", `DiemDanh_SK_${eventId}.csv`);
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
     } catch (err) {
         showToast("Lỗi", "Không thể xuất file", "danger");
+    }
+}
+
+async function exportExcelFile() {
+    if (typeof XLSX === 'undefined') {
+        return showToast("Lỗi", "Thư viện Excel chưa được tải", "danger");
+    }
+    const eventId = document.getElementById('event-select').value;
+    if (!eventId) return showToast("Chú ý", "Bạn chưa chọn sự kiện nào", "warning");
+
+    try {
+        const apiUrl = typeof baseUrl !== 'undefined' ? baseUrl : 'https://volunteer-management-05dn.onrender.com';
+        const res = await fetch(apiUrl + `/api/events/${eventId}/checkins`);
+        const data = await res.json();
+
+        if (!data || data.length === 0) {
+            return showToast("Chú ý", "Không có dữ liệu để xuất", "warning");
+        }
+
+        const formattedData = data.map((row, index) => ({
+            "STT": index + 1,
+            "Họ và Tên": row.name || '',
+            "Mã Sinh Viên": row.student_id || '',
+            "Lớp": row.class || '',
+            "Ngành học": row.major || '',
+            "Vai trò": row.participant_role === 'ORGANIZER' ? 'Ban Tổ Chức' : 'TNV',
+            "Trạng thái": row.attendance_status || '',
+            "Thời gian đăng ký": row.registered_at ? new Date(row.registered_at).toLocaleString('vi-VN') : '',
+            "Thời gian điểm danh": row.checkin_time ? new Date(row.checkin_time).toLocaleString('vi-VN') : ''
+        }));
+
+        const wb = XLSX.utils.book_new();
+        const ws = XLSX.utils.json_to_sheet(formattedData);
+
+        const colWidths = [
+            { wch: 5 }, { wch: 25 }, { wch: 15 }, { wch: 15 }, { wch: 25 }, { wch: 15 }, { wch: 15 }, { wch: 22 }, { wch: 22 }
+        ];
+        ws['!cols'] = colWidths;
+
+        XLSX.utils.book_append_sheet(wb, ws, "Danh_sach_diem_danh");
+        XLSX.writeFile(wb, `DiemDanh_SK_${eventId}.xlsx`);
+
+    } catch (err) {
+        showToast("Lỗi", "Không thể xuất file", "danger");
+        console.error(err);
     }
 }
 

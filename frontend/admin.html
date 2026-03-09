@@ -970,8 +970,10 @@
                     <div id="checkin-container">
                         <div class="empty-state">Chọn một sự kiện để xem danh sách sinh viên đăng ký.</div>
                     </div>
-                    <div id="export-section" style="display: none; margin-top: 20px; text-align: right;">
-                        <button onclick="exportAttendance()" class="btn-custom btn-outline">Xuất báo cáo (.csv)</button>
+                    <div id="export-section"
+                        style="display: none; margin-top: 20px; display: flex; justify-content: flex-end; gap: 10px; flex-wrap: wrap;">
+                        <button onclick="exportCSV()" class="btn-custom btn-outline">Xuất CSV (.csv)</button>
+                        <button onclick="exportExcelFile()" class="btn-custom btn-primary">Xuất Excel (.xlsx)</button>
                     </div>
                 </div>
             </div>
@@ -1209,6 +1211,7 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="js/admin.js"></script>
 </body>
 
