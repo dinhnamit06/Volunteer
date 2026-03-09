@@ -195,14 +195,19 @@ async function createEvent(e) {
         if (res.ok) {
             showToast("Thành công", "Đã tạo sự kiện mới", "success");
             e.target.reset();
-            closeModal('event-modal');
+            // Xóa dòng closeModal vì form không còn nằm trong modal nữa
             loadEvents();
             loadStats();
+
+            // Tự động chuyển qua tab danh sách sự kiện nếu muốn, hoặc giữ nguyên
         } else {
             const data = await res.json();
             showToast("Lỗi", data.message, "danger");
         }
-    } catch (err) { showToast("Lỗi", "Kết nối thất bại", "danger"); }
+    } catch (err) {
+        showToast("Lỗi", "Kết nối thất bại", "danger");
+        console.error(err);
+    }
     finally {
         btn.innerHTML = originalText;
         btn.disabled = false;
