@@ -51,6 +51,7 @@ CREATE TABLE `registration` (
   `RegistrationId` int NOT NULL AUTO_INCREMENT,
   `RegistrationDate` datetime DEFAULT NULL,
   `Status` varchar(20) DEFAULT NULL,
+  `Role` varchar(20) DEFAULT 'VOLUNTEER',
   `StudentId` int DEFAULT NULL,
   `EventId` int DEFAULT NULL,
   PRIMARY KEY (`RegistrationId`),
