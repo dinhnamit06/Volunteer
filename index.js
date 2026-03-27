@@ -13,7 +13,8 @@ app.use(cors({
         'http://127.0.0.1:5000',
         'http://127.0.0.1:5500',
         'https://dinhnamit06.github.io',
-        'https://jade-treacle-32d00e.netlify.app'
+        'https://jade-treacle-32d00e.netlify.app',
+        'https://volunteer-2.onrender.com'
     ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],

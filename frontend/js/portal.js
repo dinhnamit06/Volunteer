@@ -1,5 +1,5 @@
 // portal.js
-const baseUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:5000' : 'https://volunteer-management-system-qlytnv.onrender.com';
+const baseUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:5000' : 'https://volunteer-2.onrender.com';
 
 let currentUser = null;
 let qrScanner = null;
