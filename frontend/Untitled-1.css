@@ -1,0 +1,1195 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tạo vòng quay may mắn miễn phí</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" href="/img/logox.png" />
+    <link rel="stylesheet" href="https://www.w3.org/1999/xlink" />
+    <meta name="description" content="XSPIN cung cấp vòng quay may mắn hoàn toàn miễn phí giúp các bạn có thể lựa chọn ngẫu nhiên các phần quà một cách công bằng">
+
+    <meta property="og:image" content="/img/Tao-vong-quay-may-man-mien-phi.jpg" />
+
+    <link rel="stylesheet" href="plugins/vqmm_v1/main.css" type="text/css" />
+    <!--<script type="text/javascript" src="plugins/vqmm_v1/Winwheel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>-->
+
+    <script src="jquery-1.11.3.min.js"></script>
+    <!--<script type="text/javascript" src="jquery-ui.min.js"></script>-->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+
+    <!--<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>-->
+
+
+    <!--<link href="font-awesome.min.css" rel="stylesheet" />-->
+    
+    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <!-- bootstrap css file link -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css?v=1.5">
+    <!-- jquery ui css file link -->
+    <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
+    <!-- animate css file link -->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <!-- lightcase css file link -->
+    <link rel="stylesheet" href="assets/css/lightcase.css">
+    <!-- owl carousel css file link -->
+    <!--<link rel="stylesheet" href="assets/css/owl.carousel.min.css">-->
+
+    <link rel="stylesheet" href="assets/css/style.css?v=2.22">
+
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="/css/StylePopup.css?v=1.5">
+
+    <!--<link rel='stylesheet' href='sweet-alert.css'>
+    <script src='sweet-alert.min.js'></script>-->
+
+    <style>
+        .MyButton1 {
+            float: left;
+            color: #fff;
+            background-color: #198754b3;
+            border-color: #198754b3;
+            padding: 5px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 3px;
+            font-size: 14px;
+        }
+
+        .MyTextarea {
+            width: 92%;
+            height: 250px;
+            border-radius: 3px;
+            border-style: none;
+            background: #464646;
+            color: white;
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+
+        .MyButton {
+            background-image: -webkit-linear-gradient( 57deg, #f33737 0%, #ff7878 100%, #1b4e76 100%);
+            border-style: none;
+            border-radius: 3px;
+            font-weight: bold;
+            padding: 10px 10px;
+            color: #ebebeb;
+            margin-bottom: 10px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .vqLeft {
+        }
+
+        .vRight {
+            border: 1px solid #dadada;
+            background: #e6e6e6;
+            padding: 5px 10px;
+            border-radius: 3px;
+            margin-top: 10px;
+        }
+
+        .MyCanvas {
+            /*background-image: url(plugins/vqmm_v1/images/wheel_back2.png);*/
+            background-image: url(img/NutTrungTam.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 90%;
+        }
+        /*desktop*/
+        @media (min-width: 1131px) {
+            .imgContent
+            {
+                width:70%;
+            }
+            .vqLeft {
+                float: left;
+                width: 50%;
+            }
+
+            .vRight {
+                float: left;
+                width: 45%;
+            }
+
+            .MyCanvas {
+                width: 70%;
+            }
+
+            .AnCaiDat {
+                width: 250px;
+                display: inline-table;
+            }
+            .aTuVan{
+                display:block;
+            }
+            .aTuVan1 {
+                display: none;
+            }
+        }
+        /*ipad pro*/
+        @media(max-width: 1130px) and (min-width: 769px) {
+            .imgContent {
+                width: 70%;
+            }
+            .vqLeft {
+                float: left;
+                width: 50%;
+            }
+
+            .vRight {
+                float: left;
+                width: 45%;
+            }
+
+            .AnCaiDat {
+                display: none;
+            }
+            .aTuVan {
+                display: none;
+            }
+            .aTuVan1 {
+                display: block;
+            }
+        }
+        /*ipad*/
+        @media(max-width: 768px) and (min-width: 767px) {
+            .imgContent {
+                width: 100%;
+            }
+            .imgContent {
+                width: 80%;
+            }
+            .vqLeft {
+                float: left;
+                width: 100%;
+            }
+
+            .vRight {
+                float: left;
+                width: 100%;
+            }
+            .AnCaiDat {
+                display: none;
+            }
+            #back-wheel{
+                scale: 1;
+                width: 400px !important;
+                height: 400px !important;
+            }
+            #wheelOfFortune{
+                width: 360px !important;
+                height: 360px !important;
+            }
+            #spin{
+                font-size: 18px !important;
+            }
+            .aTuVan {
+                display: none;
+            }
+            .aTuVan1 {
+                display: block;
+            }
+        }
+        @media(max-width: 1050px){
+            .imgContent {
+                width: 100%;
+            }
+            #back-wheel{
+                scale: 0.9;
+            }
+        }
+        @media(max-width: 950px){
+            #back-wheel{
+                scale: 1;
+                width: 350px !important;
+                height: 350px !important;
+            }
+            #wheelOfFortune{
+                width: 339px !important;
+                height: 339px !important;
+            }
+            #spin{
+                font-size: 15px !important;
+            }
+        }
+        @media(max-width: 479px){
+            .imgContent {
+                width: 100%;
+            }
+            .AnCaiDat {
+                display: none;
+            }
+            #back-wheel{
+                scale: 1;
+                width: 330px !important;
+                height: 330px !important;
+            }
+            #wheelOfFortune{
+                width: 320px !important;
+                height: 320px !important;
+            }
+            #spin{
+                font-size: 15px !important;
+            }
+            .aTuVan {
+                display: none;
+            }
+            .aTuVan1 {
+                display: block;
+            }
+        }
+        /*phone*/
+        @media(max-width: 766px) and (min-width: 480px) {
+            .imgContent {
+                width: 100%;
+            }
+            .vqLeft {
+                float: left;
+                width: 100%;
+            }
+            .vRight {
+                float: left;
+                width: 94%;
+            }
+            .AnCaiDat {
+                display: none;
+            }
+            #back-wheel{
+                scale: 1;
+                width: 400px !important;
+                height: 400px !important;
+            }
+            #wheelOfFortune{
+                width: 382px !important;
+                height: 382px !important;
+            }
+            #spin{
+                font-size: 18px !important;
+            }
+            .aTuVan {
+                display: none;
+            }
+            .aTuVan1 {
+                display: block;
+            }
+        } 
+    </style>
+    <style>
+        @-webkit-keyframes my {
+            0% {
+                color: #5aa800;
+            }
+
+            50% {
+                color: #ea0000;
+            }
+
+            100% {
+                color: #5aa800;
+            }
+        }
+
+        @-moz-keyframes my {
+            0% {
+                color: #5aa800;
+            }
+
+            50% {
+                color: #ea0000;
+            }
+
+            100% {
+                color: #5aa800;
+            }
+        }
+
+        @-o-keyframes my {
+            0% {
+                color: #5aa800;
+            }
+
+            50% {
+                color: #ea0000;
+            }
+
+            100% {
+                color: #5aa800;
+            }
+        }
+
+        @keyframes my {
+            0% {
+                color: #5aa800;
+            }
+
+            50% {
+                color: #ea0000;
+            }
+
+            100% {
+                color: #5aa800;
+            }
+        }
+
+        .nhapnhay {
+            -webkit-animation: my 700ms infinite;
+            -moz-animation: my 700ms infinite;
+            -o-animation: my 700ms infinite;
+            animation: my 700ms infinite;
+        }
+    </style>
+
+    <!--<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>-->
+    <link rel="stylesheet" href="Plugins/Congrats/style.css?v=1.2">
+
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //alert('2342');
+            $("#dvCongCuHayKhac").load("CongCuHayKhac1.html");
+
+            var ccPhanQuay=getCookie("PhanQuay");
+            //alert(ccPhanQuay);
+            if(ccPhanQuay != "" && ccPhanQuay != null)
+            {
+                $('#txtPhanQuay').val(ccPhanQuay.replaceAll("~","\n"));
+                var sTieuDe = "TẠO VÒNG QUAY MAY MẮN MIỄN PHÍ";
+                $('#txtTieuDe').val(sTieuDe);
+                LoadVongQuay();
+            }
+            else
+            {
+                ThietLapVongQuay();
+            }
+
+            //ThietLapVongQuay();
+        });
+        //function getCookie(cname) {
+        //    let name = cname + "=";
+        //    let ca = document.cookie.split(';');
+        //    for (let i = 0; i < ca.length; i++) {
+        //        let c = ca[i];
+        //        while (c.charAt(0) == ' ') {
+        //            c = c.substring(1);
+        //        }
+        //        if (c.indexOf(name) == 0) {
+        //            return c.substring(name.length, c.length);
+        //        }
+        //    }
+        //    return "";
+        //}
+        function getCookie(cookie_name) {
+            var results = document.cookie.match ('(^|;) ?' + cookie_name + '=([^;]*)(;|$)');
+            return results ? decodeURIComponent(results[2]) : null;
+        }
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + encodeURIComponent(cvalue) + ";" + expires + ";path=/";
+        }
+        function ThietLapVongQuay() {
+            /*var sPhanQuay = "";
+            let vqmm = getCookie("vqmmfree2");
+            if (vqmm != null && vqmm != "") {
+                sPhanQuay = vqmm.replaceAll("~~~~~-----", "\n");
+            }
+
+            var sTieuDe = "";
+            let vqmmtieude = getCookie("vqmmtieude2");
+            if (vqmmtieude != null && vqmmtieude != "") {
+                sTieuDe = vqmmtieude;
+            }
+
+            if (sPhanQuay.trim() == "")
+            {
+                sPhanQuay += "Voucher 100K\n";
+                sPhanQuay += "Chúc bạn may mắn\n";
+                sPhanQuay += "Voucher 50K\n";
+                sPhanQuay += "Voucher 250K\n";
+                sPhanQuay += "Chúc bạn may mắn\n";
+                sPhanQuay += "Voucher 200K\n";
+                sPhanQuay += "Voucher 100K\n";
+                sPhanQuay += "Chúc bạn may mắn\n";
+                sPhanQuay += "Voucher 250K\n";
+                sPhanQuay += "Chúc bạn may mắn\n";
+            }
+            if (sTieuDe == "") {
+                sTieuDe = "TẠO VÒNG QUAY MAY MẮN MIỄN PHÍ VÀ CHUYÊN NGHIỆP";
+            }
+
+            if (sTieuDe.length == 1 && sPhanQuay.split("\n").length == 2)
+            {
+                sPhanQuay += "Voucher 100K\n";
+                sPhanQuay += "Chúc bạn may mắn\n";
+                sPhanQuay += "Voucher 50K\n";
+                sPhanQuay += "Voucher 250K\n";
+                sPhanQuay += "Chúc bạn may mắn\n";
+                sPhanQuay += "Voucher 200K\n";
+                sPhanQuay += "Voucher 100K\n";
+                sPhanQuay += "Chúc bạn may mắn\n";
+                sPhanQuay += "Voucher 250K\n";
+                sPhanQuay += "Chúc bạn may mắn\n";
+                sTieuDe = "TẠO VÒNG QUAY MAY MẮN MIỄN PHÍ VÀ CHUYÊN NGHIỆP";
+            }*/
+
+            var sPhanQuay = "";
+            var sTieuDe = "";
+            sPhanQuay += "Bảo Vy\n";
+            sPhanQuay += "Cát Tường\n";
+            sPhanQuay += "Gia Hân\n";
+            sPhanQuay += "Hoài An\n";
+            sPhanQuay += "Linh Chi\n";
+            sPhanQuay += "Ngọc Khuê\n";
+            sPhanQuay += "Thanh Hà\n";
+            sPhanQuay += "Tuyết Nhung\n";
+            sPhanQuay += "Yến Vy\n";
+            sPhanQuay += "Thùy Linh\n";
+            //sPhanQuay += "Diễm My\n";
+            //sPhanQuay += "Thu Thủy\n";
+            sTieuDe = "TẠO VÒNG QUAY MAY MẮN MIỄN PHÍ";
+
+            $('#txtPhanQuay').val(sPhanQuay);
+
+            //var sTieuDe = "VÒNG QUAY MAY MẮN";
+            $('#txtTieuDe').val(sTieuDe);
+
+            LoadVongQuay();
+        }
+        function VongQuayVui(Loai) {
+            var sPhanQuay = "";
+            var sTieuDe = "";
+            if (Loai == "SangNayAnGi") {
+                sPhanQuay += "Phở bò\n";
+                sPhanQuay += "Bún bò huế\n";
+                sPhanQuay += "Bún mắm\n";
+                sPhanQuay += "Cơm tấm\n";
+                sPhanQuay += "Bánh cuốn\n";
+                sPhanQuay += "Bánh hỏi\n";
+                sPhanQuay += "Hủ tiếu\n";
+                sPhanQuay += "Phở gà\n";
+                sPhanQuay += "Mì gói\n";
+                sPhanQuay += "Cơm chiên\n";
+                sPhanQuay += "Nhịn\n";
+                sPhanQuay += "Xôi\n";
+                //sPhanQuay += "Bánh mì\n";
+                //sPhanQuay += "Bánh bao\n";
+                sTieuDe = "SÁNG NAY ĂN GÌ?";
+            }
+            if (Loai == "ChonMauAo") {
+                sPhanQuay += "Áo đỏ\n";
+                sPhanQuay += "Áo xanh dương\n";
+                sPhanQuay += "Áo trắng\n";
+                sPhanQuay += "Áo vàng\n";
+                sPhanQuay += "Áo cam\n";
+                sPhanQuay += "Áo tím\n";
+                sPhanQuay += "Áo đen\n";
+                sPhanQuay += "Áo xanh lá\n";
+                sTieuDe = "CHỌN MÀU ÁO";
+            }
+            if (Loai == "DatTenConTrai") {
+                sPhanQuay += "Thanh Sơn\n";
+                sPhanQuay += "Khắc Cường\n";
+                sPhanQuay += "Hải Dương\n";
+                sPhanQuay += "Thanh Bình\n";
+                sPhanQuay += "Bảo Khánh\n";
+                sPhanQuay += "Gia Bảo\n";
+                sPhanQuay += "Tùng Sơn\n";
+                sPhanQuay += "Hải nam\n";
+                sPhanQuay += "Đức Anh\n";
+                sPhanQuay += "Minh nhật\n";
+                //sPhanQuay += "Thanh Tùng\n";
+                //sPhanQuay += "Quốc Khánh\n";
+                sTieuDe = "ĐẶT TÊN CON TRAI";
+            }
+            if (Loai == "DatTenConGai") {
+                sPhanQuay += "Bảo Vy\n";
+                sPhanQuay += "Cát Tường\n";
+                sPhanQuay += "Gia Hân\n";
+                sPhanQuay += "Hoài An\n";
+                sPhanQuay += "Linh Chi\n";
+                sPhanQuay += "Ngọc Khuê\n";
+                sPhanQuay += "Thanh Hà\n";
+                sPhanQuay += "Tuyết Nhung\n";
+                sPhanQuay += "Yến Vy\n";
+                sPhanQuay += "Thùy Linh\n";
+                sPhanQuay += "Diễm My\n";
+                sPhanQuay += "Thu Thủy\n";
+                //sPhanQuay += "Thanh Tuyền\n";
+                //sPhanQuay += "Đoan trang\n";
+                sTieuDe = "ĐẶT TÊN CON GÁI";
+            }
+            if (Loai == "LixiNamMoi") {
+                sPhanQuay += "100K\n";
+                sPhanQuay += "20K\n";
+                sPhanQuay += "150K\n";
+                sPhanQuay += "10K\n";
+                sPhanQuay += "350K\n";
+                sPhanQuay += "200K\n";
+                sPhanQuay += "50K\n";
+                sPhanQuay += "250K\n";
+                sPhanQuay += "300K\n";
+                sPhanQuay += "100K\n";
+                sPhanQuay += "20K\n";
+                sPhanQuay += "150K\n";
+                sPhanQuay += "10K\n";
+                sPhanQuay += "350K\n";
+                sPhanQuay += "200K\n";
+                sPhanQuay += "50K\n";
+                //sPhanQuay += "250K\n";
+                //sPhanQuay += "300K\n";
+                sTieuDe = "LÌ XÌ NĂM MỚI";
+            }
+            if (Loai == "TangVoucher") {
+                sPhanQuay += "Voucher 100K\n";
+                sPhanQuay += "Voucher 50K\n";
+                sPhanQuay += "Voucher 10%\n";
+                sPhanQuay += "Voucher 15%\n";
+                sPhanQuay += "Voucher 200K\n";
+                sPhanQuay += "Voucher 5%\n";
+                sPhanQuay += "Voucher 300K\n";
+                sPhanQuay += "Voucher 250K\n";
+                sPhanQuay += "Voucher 500K\n";
+                sPhanQuay += "Voucher 100K\n";
+                sPhanQuay += "Voucher 50K\n";
+                sPhanQuay += "Voucher 10%\n";
+                sPhanQuay += "Voucher 15%\n";
+                sPhanQuay += "Voucher 200K\n";
+                sPhanQuay += "Voucher 5%\n";
+                sPhanQuay += "Voucher 300K\n";
+                //sPhanQuay += "Voucher 250K\n";
+                //sPhanQuay += "Voucher 500K\n";
+                sTieuDe = "TẶNG VOUCHER";
+            }
+            if (Loai == "TangQuaGiChoBanGai") {
+                sPhanQuay += "Túi xách\n";
+                sPhanQuay += "Váy áo mới\n";
+                sPhanQuay += "Giày cao gót\n";
+                sPhanQuay += "Dây chuyền\n";
+                sPhanQuay += "Móc khóa đáng yêu\n";
+                sPhanQuay += "Ốp lưng điện thoại\n";
+                sPhanQuay += "Đồng hồ\n";
+                sPhanQuay += "Gấu bông\n";
+                sPhanQuay += "Hoa\n";
+                sPhanQuay += "Khăn choàng\n";
+                sPhanQuay += "Nước hoa\n";
+                sPhanQuay += "Bộ chăm sóc da\n";
+                //sPhanQuay += "Ví da\n";
+                //sPhanQuay += "Chậu cây cảnh nhỏ\n";
+                sTieuDe = "TẶNG QUÀ GÌ CHO BẠN GÁI?";
+            }
+
+            $('#txtPhanQuay').val(sPhanQuay);
+            //var sTieuDe = "VÒNG QUAY MAY MẮN";
+            $('#txtTieuDe').val(sTieuDe);
+
+            LoadVongQuay();
+        }
+
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-74657772-8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-74657772-8');
+    </script>
+
+    <script>
+        var bien = 0;
+        function DoiDiv() {
+
+            if (bien == 0) {
+                $('#navbarSupportedContent').attr('class', 'collapse navbar-collapse show');
+                bien = 1;
+
+            }
+            else {
+                $('#navbarSupportedContent').attr('class', 'collapse navbar-collapse');
+                bien = 0;
+            }
+
+        }
+        function ScrollToDiv(id) {
+            //alert("aaa");
+            $(window).scrollTop($('.' + id).offset().top - 200);
+        }
+
+        function openTrungThuong(KetQua) {
+            //alert("1111");
+            //document.getElementById("dvTrungThuong").style.display = "block";
+            document.getElementById("dvKetQuaQuay").innerHTML = "<div style='font-size: 23px;color: #4e4e4e;'>Bạn đã quay vào ô</div><div>" + KetQua + "</div>";
+
+            const overlay = $('#dvTrungThuong');
+            const popup = $('#dvConTrungThuong');
+            overlay.css({ display: 'block', opacity: 0 });
+
+            const popupHeight = popup.outerHeight();
+            const viewportHeight = $(window).height();
+
+            
+
+            if (popupHeight >= viewportHeight) {
+                popup.css({
+                    position: 'relative',
+                    top: '0',
+                    transform: 'translateX(-50%)'
+                });
+                overlay.scrollTop(0);
+            } else {
+                const top = (viewportHeight - popupHeight) / 2;
+                popup.css({
+                    position: 'fixed',
+                    top: top + 'px',
+                    transform: 'translateX(-50%)'
+                });
+            }
+            overlay.animate({ opacity: 1 }, 'normal');
+        }
+        function closeTrungThuong() {
+            document.getElementById("dvTrungThuong").style.display = "none";
+            //resetWheel();
+        }
+
+        function AnCaiDat() {
+            $('.vqLeft').css("width", "100%");
+            $('#canvas').css("width", "42%");
+            $('.vRight').css("display", "none");
+        }
+        function HienCaiDat() {
+            $('.vqLeft').css("width", "50%");
+            $('#canvas').css("width", "70%");
+            $('.vRight').css("display", "block");
+        }
+
+        function DatLai()
+        {
+            $("#txtPhanQuay").val("");
+        }
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1206708643224072"
+            crossorigin="anonymous"></script>
+    <script>
+        setTimeout(function () {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }, 200);
+        //(adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <!--<div class="zalo-chat-widget" data-oaid="1507314870916914776" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="3" data-width="500" data-height="500"></div>
+    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+    <style>
+        .zalo-chat-widget {
+            bottom: 15px !important;
+            right: 15px !important;
+            width: 100px;
+        }
+    </style>-->
+    <!--<a href="tel:0915660068" target="_blank" rel="nofollow" style="position: fixed;bottom: 5px;left: 20px;z-index:9999"><img src="img/phone-icon.gif" style="width: 80px; " /></a>-->
+    <a href="https://www.youtube.com/@xspinofficial" target="_blank" rel="nofollow" style="position: fixed;bottom: 5px;left: 20px;z-index:9999"><img src="/img/iconYoutube.png" style="width: 60px; margin-top:-60px " /></a>
+    <a href="https://zalo.me/1507314870916914776" target="_blank" rel="nofollow" style="position: fixed;bottom: 5px;right: 20px;z-index:9999"><img src="img/Zalo.gif" style="width: 80px; " /></a>
+
+</head>
+<body style="background-color: #F4F4FC">
+    <!--<div id="dvCongrats" class="congrats">
+        <h1>Congratulations!</h1>
+    </div>-->
+    <header class="header-section">
+        <div class=" header-bottom">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="site-logo site-title" href="/"><img style="width: 150px;" src="assets/images/logo.png" alt="site-logo"></a>
+                    <button onclick="DoiDiv();" class="navbar-toggler" style="z-index: 9999;" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="menu-toggle"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav main-menu ml-auto" style="z-index: 9999;">
+                            <li><a href="index.aspx">Trang chủ</a></li>
+                            <li><a href="vongquay.html">Vòng Quay May Mắn</a></li>
+                            <li><a href="QuaySoNgauNhien.html">Quay Số Ngẫu Nhiên</a></li>
+                            <li><a href="Boc-tham-trung-thuong.html">Bốc thăm trúng thưởng</a></li>
+                            <li><a href="cong-cu-nho.html">Công cụ hay</a></li>
+                            <!--<li><a href="ma-giam-gia-all">Mã giảm giá</a></li>-->
+                            <li><a href="xspin.html">XSPIN</a></li>
+
+                            <li><a href="https://xspin.vn/lien-he?utm=qsvn" target="_blank">Liên hệ</a></li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div><!-- header-bottom end -->
+
+        <link rel="stylesheet" href="/assets/css/style2.css?v=1.52">
+
+    </header>
+
+    <div>
+
+        <main id="main" style="overflow: hidden;">
+
+            <!-- ======= Clients Section ======= -->
+            <!-- ======= Services Section ======= -->
+            <section id="services" class="services">
+                <div class="container" style="margin-top:5px">
+                    <div align="center">
+
+                        <div id="txtLoadTieuDe" style="text-align: center; padding: 7px; font-size: 27px; font-weight: bold; color: #000000; margin-bottom: 15px;">TẠO VÒNG QUAY MAY MẮN MIỄN PHÍ</div>
+                        <div style="overflow:hidden; margin-top:-10px">
+                            <div class="vqLeft" style="padding-bottom: 10px;">
+                                <div class="the_wheel" align="center" valign="center">
+                                    <div id="back-wheel">
+                                        <div id="moc"></div>
+                                        <div id="wheelOfFortune">
+                                            <div id="shadow" style="z-index: 1;"></div>                                              
+                                            <!-- <div id="chop"></div> -->
+                                            <div id="spin" style="z-index: 1;">Quay</div>
+                                            <canvas id="wheel" width="390" height="390"></canvas>
+                                        </div>
+                                    </div>
+                                    <button id="cl" style="display: none;">clear</button>
+
+                                    <script src="/js/main2.js?v=1.552"></script>
+
+
+                                    <div style="margin-top: 10px;">
+                                        <table class="AnCaiDat">
+                                            <tr>
+                                                <td style="width: 19px;">
+                                                    <input onclick="AnCaiDat()" id="rdAnCaiDat" type="radio" name="AnCaiDat" style="width: 17px; height: 17px; display: block; vertical-align: middle;" />
+                                                </td>
+                                                <td>
+                                                    Mở rộng
+                                                </td>
+                                                <td style="width: 19px;">
+                                                    <input onclick="HienCaiDat()" id="rdHienCaiDat" type="radio" name="AnCaiDat" style="width: 17px; height: 17px; display: block; vertical-align: middle;" checked="checked" />
+                                                </td>
+                                                <td>
+                                                    Thu nhỏ
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div>
+                                        <!--<a href="https://xspin.vn/gioi-thieu-phan-mem-vong-quay-may-man?utm=qsvn" style="color:red; text-decoration:underline; font-size:25px" target="_blank">GÓI CHUYÊN NGHIỆP</a>-->
+                                        <a target="_blank" href="https://xspin.vn/gioi-thieu-phan-mem-vong-quay-may-man?utm=qsvn" class="cmn-btn nhapnhay" style="cursor: pointer; width: 310px; border-radius: 50px; color: white; background-image: -webkit-linear-gradient(57deg, #ffeaad 0%, #fff179 100%, rgb(17 164 26) 100%); margin: auto; font-size: 18px; border: 2px solid #f1ff6b; ">
+                                            Sử dụng gói chuyên nghiệp XSPIN
+                                        </a>
+                                    </div>
+                                    <!--<div class="aTuVan" style="text-align:center; margin-top:10px">
+                                        <a id="aTuVan1" target="_blank" href="https://xspin.vn/dang-ky-tai-khoan-user?utm=qsvn" class="cmn-btn" style="cursor: pointer;
+                            width: 310px;
+                            border-radius: 4px;
+                            color: #f5f5b4;
+                            background-image: -webkit-linear-gradient( 57deg, #728b54 0%, #83b185 100%, rgb(17 164 26) 100%);
+                            margin: auto;
+                            font-size: 18px;
+                            border: 2px solid #8BC34A;">
+                                            Tư vấn tạo game
+                                        </a>
+                                    </div>-->
+                                    <!--<div style="text-align:center">
+                                        <a href="https://vongquaymayman.vn" style="cursor: pointer; width: 275px; border-radius: 4px; color: white; background-image: -webkit-linear-gradient( 57deg, #2fb541 0%, #000000 100%, rgb(17 164 26) 100%); padding: 0px 20px; margin: auto; font-size: 18px; background: #ff9800; margin-top: 10px;" class="cmn-btn">
+                                            Quay số trúng card điện thoại
+                                        </a>
+                                    </div>-->
+                                    <!--<div style="text-align:center; margin-top:5px">
+                                        <a href="https://vongquaymayman.vn" target="_blank" style="color: #ff9800; font-size: 23px; text-decoration: underline;">Quay số trúng card điện thoại</a>
+                                    </div>-->
+                                </div>
+                            </div>
+                            <div class="vRight">
+                                <h3>Cấu hình vòng quay</h3>
+                                <div style="margin-top:5px">
+                                    <input type="text" id="txtTieuDe" style="width: 93%; font-size: 11px; padding: 3px 5px;" placeholder="Nhập tiêu đề" />
+                                </div>
+                                <div style="margin-top:5px">
+                                    <textarea id="txtPhanQuay" class="MyTextarea"></textarea>
+                                </div>
+                                <div style="font-style: italic; color: #007ee2; font-size: 14px; font-weight: bold; margin-top: -5px; margin-bottom: 5px;">Cài đặt sẽ không bị mất đi khi mở lại</div>
+                                <div style="text-align:center">
+                                    <input onclick="CapNhatVongQuay()" type="button" value="Cập nhật vòng quay" class="MyButton" style="background-image: -webkit-linear-gradient(280deg, #428045 0%, #4CAF50 100%, #1b4e76 100%);" />
+                                    <input onclick="DatLai()" type="button" value="Đặt lại" class="MyButton" />
+                                    <!--<p style="font-style: italic; font-size: 14px; color: #1f9a24;">(Cài đặt 1 lần sử dụng được cho những lần sau mà không phải cài lại)</p>-->
+
+                                    <!--<div class="aTuVan1">
+                                        <a id="aTuVan2" target="_blank" href="https://xspin.vn/dang-ky-tai-khoan-user?utm=qsvn" class="cmn-btn" style="cursor: pointer; width: 97%; border-radius: 4px; color: #f5f5b4; background-image: -webkit-linear-gradient( 57deg, #728b54 0%, #83b185 100%, rgb(17 164 26) 100%); margin: auto; font-size: 18px; border: 2px solid #8BC34A; border-radius: 10px;">
+                                            Tư vấn tạo game
+                                        </a>
+                                    </div>-->
+
+                                    <div style="overflow:hidden; margin:5px 0px">
+                                        <div style="text-align: center; font-size: 18px; font-weight: bold; color: #337e36">Vòng quay vui</div>
+                                        <div style="text-align:center">
+                                            <div onclick="VongQuayVui('SangNayAnGi')" class="MyButton1">Sáng nay ăn gì?</div>
+                                            <div onclick="VongQuayVui('ChonMauAo')" class="MyButton1" style="background: #d08f2dc2;">Chọn màu áo</div>
+                                            <div onclick="VongQuayVui('DatTenConTrai')" class="MyButton1" style="background: #116db6b3;">Đặt tên con trai</div>
+                                            <div onclick="VongQuayVui('DatTenConGai')" class="MyButton1" style="background: #df3b72bd;">Đặt tên con gái</div>
+                                            <div onclick="VongQuayVui('LixiNamMoi')" class="MyButton1" style="background: #fa4040bd;">Lì xì năm mới</div>
+                                            <div onclick="VongQuayVui('TangVoucher')" class="MyButton1" style="background: #33b840c7; ">Tặng voucher</div>
+                                            <div onclick="VongQuayVui('TangQuaGiChoBanGai')" class="MyButton1" style="background: #673ab7c2; ">Tặng quà gì cho bạn gái?</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div>
+                                    <!--<a href="https://xspin.vn/gioi-thieu-phan-mem-vong-quay-may-man?utm=qsvn" style="color:red; text-decoration:underline; font-size:25px" target="_blank">GÓI CHUYÊN NGHIỆP</a>-->
+                                    <a target="_blank" href="https://xspin.vn/gioi-thieu-phan-mem-vong-quay-may-man?utm=qsvn">
+                                        <img style="border-radius: 3px;" title="Vòng quay may mắn chuyên nghiệp XSPIN" src="img/gioi-thieu-vong-quay-xspin.jpg" />
+                                    </a>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div style="padding: 10px 5%">
+                            <div style="text-align:center">
+                                <ins class="adsbygoogle"
+                                     style="display:block"
+                                     data-ad-client="ca-pub-1206708643224072"
+                                     data-ad-slot="3343717865"
+                                     data-ad-format="auto"
+                                     data-full-width-responsive="true"></ins>
+                            </div>
+                        </div>
+
+                        <div style="text-align: left; padding: 10px 5%">
+                            <div style="margin-top:5px;">
+                                Đây là vòng quay may mắn được XSPIN thiết kế và cho phép người dùng sử dụng miễn phí, dựa trên nhu cầu thực tiễn nhiều người muốn sử dụng vòng quay để tổ chức các trò chơi nho nhỏ nhằm tăng tính thú vị cho các cuộc hội thảo, bán hàng,…
+                            </div>
+                            <div style="margin-top: 5px;">
+                                Vòng quay được thiết kế với giao diện đẹp, hiện đại và trực quan, khi hoạt động sẽ được xử lý qua code random để chọn ra ngẫu nhiên một phần trúng… bất kỳ ai cũng có thể dễ dàng sử dụng để để tổ chức mini game hỗ trợ công việc và giải trí.
+                            </div>
+                            <div style="margin-top: 5px;">
+                                Tình huống sử dụng phổ biến và quan trọng nhất là khi các nhà bán hàng đang live stream có thể thể sử dụng vòng quay để tặng voucher hoặc hiện vật cho những người đã mua hàng, tình huống này cũng có thể áp dụng trực tiếp tại các cửa hàng nhằm tri ân khách vừa mua.
+                            </div>
+                            <p style="text-align:center"><img src="/img/Vong-quay-may-man.jpg" alt="Vòng quay may mắn" class="imgContent" /></p>
+                        </div>
+                        
+                        <div style="text-align:left; padding:10px 5%">
+                            <p style="padding: 5px 0px;"><h5>HƯỚNG DẪN SỬ DỤNG</h5></p>
+                            <div>
+                                <p><b>Bước 1:</b> Bạn vào mục "Cấu hình vòng quay" nhấn nút "Đặt lại" để xóa nội dung cũ và nhập đủ các mảnh ghép cần thiết cho vòng quay, mỗi mảnh ghép là một dòng, sau đó nhấn vào nút "Cập Nhật Vòng Quay" để hoàn tất việc cài đặt.</p>
+                                <p>Dữ liệu cài đặt sẽ không bị mất đi dù bạn lỡ tay tắt web hoặc 1 sự cố nào khác, nó chỉ mất khi bạn dùng chế độ ẩn danh hoặc có sự tác động cài đặt trong trình duyệt.</p>
+                                <p style="text-align:center"><img src="/img/Huong-dan-cau-hinh-vong-quay.jpg" alt="Hướng dẫn cấu hình vòng quay may mắn" /></p>
+                                <p><b>Bước 2:</b> Sau khi hoàn tất việc cài đặt, vòng quay được tạo ra hoàn chỉnh, bạn chỉ cần nhấn nút "Quay" ở giữa và chờ đợi kết quả hiển thị trên popup khi vòng quay kết thúc.</p>
+                            </div>
+
+                            <!--<p style="color: #980000; margin-top:10px">
+                                Bạn có thể dùng bản chuyên nghiệp dành cho các sự kiện tri ân khách hàng tại: <a style="color: red !important;" id="vqcn" href="https://xspin.vn?utm=qsvngioi-thieu-phan-mem-vong-quay-may-man">Vòng quay chuyên nghiệp</a>
+                            </p>-->
+                            <p style="color: #980000; margin-top:10px">
+                                Bạn có thể dùng bản chuyên nghiệp dành cho các sự kiện tri ân khách hàng tại: <a style="color: red !important;" id="vqcn" href="https://xspin.vn/gioi-thieu-phan-mem-vong-quay-may-man?utm=qsvn">Vòng quay chuyên nghiệp</a>
+                            </p>
+                        </div>
+
+
+                            <!--<div style="text-align:left; padding:10px 5%">
+                                <p style="text-align:left">Vòng quay may mắn mang giá trị ứng dụng thực tiễn rất cao trong lĩnh vực marketing và giải trí. Không phải đến khi internet phát triển thì người ta mới ứng dụng, mà trước khi internet chưa phát triển vòng quay may mắn đã được ứng dụng rộng rãi bằng các vòng quay thật từ giấy carton, nhựa hoặc là kim loại. Vòng quay may mắn mang lại sự trực quan, công bằng và cả sự hồi hộp cho người tham dự, nó như một liều thuốc kích thích để giữ chân khách hàng thân thiết.</p>
+                                <div id="dvCongCuHayKhac"></div>
+                                <p style="margin-top: 10px; color: #2196f3; font-size: 20px; "><b>Một số ví dụ ứng dụng trong trong kinh doanh:</b></p>
+                                <p style="padding: 5px 0px;"><h5>1. Quay số tặng voucher khách hàng</h5></p>
+                                <p>Giả sử bạn là chủ một cửa hàng, sau khi khách hàng mua hàng bạn có thể tạo vòng quay để khách hàng của bạn quay số và trúng thưởng voucher giảm giá, đây là cách rất hữu hiệu để giữ chân khách hàng.</p>
+                                <p>Hoặc bạn cũng có thể chạy quảng cáo vòng quay để tặng voucher đến những người chưa hề mua sắm trên hệ thống của bạn, đâu là cách để thu hút khách hàng tiềm năng hiệu quả.</p>
+                                <p style="padding: 5px 0px;"><h5>2. Quay số tặng các phần quà có giá trị</h5></p>
+                                <p>Bạn đang tổ chức một sự kiện và muốn người tham dự có thêm động lực để đến với sự kiện của bạn, bạn có thể sắp xếp một chương tình quay số sử dụng vòng quay may mắn để lôi kéo người tham dự, để giảm bớt chi phí tổ chức vòng quay bạn có thể giới hạn số lượng và tỷ lệ trúng phần quà giá trị thông qua gói chuyên nghiệp của XSPIN.</p>
+                                <p style="padding: 5px 0px;"><h5>3. Vòng quay tri ân khách hàng</h5></p>
+                                <p>Ở một số dịp đặc biệt như cuối năm, chủ doanh nghiệp có thể tổ chức chương trình tri ân khách hàng bằng cách tổ chứ vòng quay may mắn tặng những phần quà giá trị đến cho quý khách hàng đã ủng hộ mình trong suốt những năm qua.</p>
+                                <p style="padding: 5px 0px;"><h5>4. Vòng quay thanh lý hàng tồn</h5></p>
+                                <p>Trường hợp bạn có nhiều hàng tồn kho cần phải thanh lý, một trong những phương pháp thanh lý hàng hiệu quả là tổ chức vòng quay để tặng quà, món quà là những mặt hàng tồn cần thanh lý, như vậy bạn đã có được một chương trình giữ chân khách hàng mà không phải bỏ chi phí trực tiếp.</p>
+
+                                <p style="margin-top: 10px; color: #2196f3; font-size: 20px; "><b>Một số ví dụ ứng dụng vui trong cuộc sống:</b></p>
+                                <p style="padding: 5px 0px;"><h5>1. Tặng quà gì cho bạn gái?</h5></p>
+                                <p>Hoặc đơn giản bạn đang hoang mang không biết tặng quà gì cho người bạn yêu thương, hãy để vòng quay may mắn lựa chọn giúp bạn.</p>
+                                <p style="text-align:center"><img src="img/tang-qua-gi-cho-ban-gai.jpg" /></p>
+                                <p style="text-align:center; font-style:italic">Ảnh minh họa</p>
+                                <p style="padding: 5px 0px;"><h5>2. Sáng nay ăn gì?</h5></p>
+                                <p>Đây là ứng dụng vui nhưng nó làm bạn đỡ nhức đầu hơn rất nhiều. Có phải hằng ngày bạn vẫn luôn suy nghĩ sẽ ăn hôm nay phải không, để khỏi phải suy nghĩ nữa bạn cứ liệt kê các món yêu thích trên vòng quay và để ứng dụng này lựa chọn giúp bạn.</p>
+                                <p style="text-align:center"><img src="img/sang-nay-an-gi.jpg" /></p>
+                                <p style="text-align:center; font-style:italic">Ảnh minh họa</p>
+                                <p style="padding: 5px 0px;"><h5>3. Ai được ăn, uống</h5></p>
+                                <p>Giả sử trong một buổi tiệc họp mặt bạn bè bạn có tổ chức một bữa tiệc nhỏ, để cho không khí vui vẻ hơn bạn có thể sử dụng vòng quay để chỉ định ai là người được ăn hoặc phải uống ly bia gì đó.</p>
+                                <p style="font-style:italic">Ngoài ra còn rất nhiều cách ứng dụng khác, tùy vào nhu cầu mà mỗi người sẽ vận dụng vòng quay may mắn theo cách riêng của mình.</p>
+                            </div>-->
+                                                <!--<p style="color: #980000; margin-top:10px">
+                                XSPIN cung cấp phần mềm vòng quay may mắn online hoàn toàn miễn phí giúp các bạn có thể lựa chọn ngẫu nhiên các phần quà một cách công bằng.
+                                <br />Bạn có thể dùng bản chuyên nghiệp dành cho các sự kiện tri ân khách hàng tại: <a style="color: red !important;" id="vqcn" href="https://xspin.vn?utm=qsvngioi-thieu-phan-mem-vong-quay-may-man">Vòng quay chuyên nghiệp</a>
+                            </p>-->
+
+
+                            <div style="text-align:left; padding:10px 5%">
+                                <div id="dvCongCuHayKhac"></div>
+                            </div>
+
+                            <!--<div class="form-popup" id="dvTrungThuong">
+                                <div class="form-container" style="padding: 0px; padding-bottom: 20px; background: #fdfce9;">
+                                    <div class="form-container-close" style="margin-right: 0px;">
+                                        <input class="form-close" value="X" type="button" onclick="closeTrungThuong()" />
+                                    </div>
+
+                                    <div id="dvKetQuaQuay" style="margin-top: 40px; font-weight: bold; font-size: 30px; color: #117411;">
+                                    </div>
+                                    <div id="dvCongrats" class="congrats">
+                                    </div>
+                                </div>
+                            </div>-->
+                        <div class="popup-overlay" id="dvTrungThuong">
+                            <div class="popup-content" id="dvConTrungThuong" style="background-image: url(/images/bgPopup.png);background-size: 100% 100%;">
+                                <a id="dvCloseDoiTac" class="popup-close">
+                                    <img onclick="closeTrungThuong()" class="form-close" src="/img/close.png" style="background: #ff000000;width: 18px;margin-right: -7px;opacity: 0.9;" />
+                                    <!--<input class="form-close" value="X" type="button" onclick="closeTrungThuong()" />-->
+                                </a>
+                                <div id="dvContentTrungThuong" style="height: auto;text-align: center;color: #143765;font-weight: bold;font-size: 17px;">
+                                    <div id="dvKetQuaQuay" style="margin-top: 40px; margin-bottom: 30px;; font-weight: bold; font-size: 30px; color: #117411;">
+                                    </div>
+                                    <div id="dvCongrats" class="congrats">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="popup-overlay" id="dvDoiTac">
+                            <div class="popup-content" id="dvConDoiTac" style="background-image: url(/images/bgPopup.png);background-size: 100% 100%;">
+                                <a id="dvCloseDoiTac" class="popup-close" onclick="CloseDoiTac()"><img class="form-close" src="Images/iconClose4.png" /></a>
+                                <div id="dvContentDoiTac" style="height: auto;text-align: center;color: #143765;font-weight: bold;font-size: 17px;">
+                                    <%--<h2>Tiêu đề popup</h2>--%>
+                                </div>
+                            </div>
+                        </div>-->
+
+                            <script>
+                                // Create new wheel object specifying the parameters at creation time.
+
+
+                                function CapNhatVongQuay() {
+
+                                    var clButton = document.getElementById("cl");
+
+                                    // Gọi sự kiện click của nút "cl"
+                                    clButton.click();
+                                    LoadVongQuay();
+                                    setCookie("PhanQuay", $('#txtPhanQuay').val().replaceAll("\n","~"), 30);
+                                    //alert($('#txtPhanQuay').val().replaceAll("\n","~"));
+
+                                    //var sPhanQuay = $('#txtPhanQuay').val().replace("\N", "\n");
+                                    //var arrPhanQuay = sPhanQuay.split('\n');
+                                    //var sPhanQuay1 = "";
+                                    //for (var i = 0; i < arrPhanQuay.length; i++) {
+                                    //    //alert(arrPhanQuay[i].trim());
+                                    //    if (arrPhanQuay[i].trim() != "") {
+                                    //        sPhanQuay1 += arrPhanQuay[i].trim() + "~~~~~-----";
+                                    //    }
+                                    //}
+                                    //sPhanQuay1 += "END";
+                                    //alert($('#txtPhanQuay').val().replaceAll("\n", "-"));
+                                    //setCookie("vqmmfree2", $('#txtPhanQuay').val().replaceAll("\n", "~~~~~-----"), 30);
+
+                                }
+
+
+                                //let audio = new Audio('/Plugins/VQMM_V1/QuaySo1.m4a')
+                                let audio = new Audio('/Mp3/QuaySo2.mp3')
+                                //function soundOn(){
+                                //    setTimeout(() => {
+                                //        audio.play();
+                                //    }, 0);
+                                //}
+                                function soundOn() {
+                                    audio.pause();
+                                    audio.currentTime = 0;
+
+                                    //audio = new Audio('/Plugins/VQMM_V1/QuaySo1.m4a');
+                                    audio = new Audio('/Mp3/QuaySo2.mp3')
+                                    audio.play();
+                                }
+
+                                function iOS() {
+                                    return [
+                                    'iPad Simulator',
+                                    'iPhone Simulator',
+                                    'iPod Simulator',
+                                    'iPad',
+                                    'iPhone',
+                                    'iPod'
+                                    ].includes(navigator.platform)
+                                    // iPad on iOS 13 detection
+                                    || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+                                }
+
+
+                                document.getElementById('spin').onclick = function(){
+                                    audio.pause();
+                                    //if (iOS() == true){
+                                    //    soundOn()
+                                    //}
+                                    //else{
+                                    //    soundOn()
+                                    //}
+                                    
+                                    soundOn();
+                                }
+
+                                // Loads the tick audio sound in to an audio object.
+
+                                // -------------------------------------------------------
+                                // Function to handle the onClick on the power buttons.
+                                // -------------------------------------------------------
+                                function powerSelected(powerLevel) {
+                                    // Ensure that power can't be changed while wheel is spinning.
+                                    if (wheelSpinning == false) {
+                                        // Reset all to grey incase this is not the first time the user has selected the power.
+                                        //document.getElementById('pw1').className = "";
+                                        //document.getElementById('pw2').className = "";
+                                        //document.getElementById('pw3').className = "";
+
+                                        // Now light up all cells below-and-including the one selected by changing the class.
+                                        //if (powerLevel >= 1) {
+                                        //    document.getElementById('pw1').className = "pw1";
+                                        //}
+
+                                        //if (powerLevel >= 2) {
+                                        //    document.getElementById('pw2').className = "pw2";
+                                        //}
+
+                                        //if (powerLevel >= 3) {
+                                        //    document.getElementById('pw3').className = "pw3";
+                                        //}
+
+                                        // Set wheelPower var used when spin button is clicked.
+                                        wheelPower = powerLevel;
+
+                                        // Light up the spin button by changing it's source image and adding a clickable class to it.
+                                        //document.getElementById('spin_button').src = "spin_on.png";
+                                        //document.getElementById('spin_button').className = "clickable";
+                                    }
+                                }
+
+                                // -------------------------------------------------------
+                                // Click handler for spin button.
+                                // -------------------------------------------------------
+                                function startSpin() {
+                                    playSoundClick();
+                                    // Ensure that spinning can't be clicked again while already running.
+                                    if (wheelSpinning == false) {
+
+                                        $("#btQuayNgay").css("display", "none");
+
+                                        // Based on the power level selected adjust the number of spins for the wheel, the more times is has
+                                        // to rotate with the duration of the animation the quicker the wheel spins.
+
+                                        /*if (wheelPower == 1) {
+                                            theWheel.animation.spins = 3;
+                                        } else if (wheelPower == 2) {
+                                            theWheel.animation.spins = 6;
+                                        } else if (wheelPower == 3) {
+                                            theWheel.animation.spins = 10;
+                                        }*/
+                                        //theWheel.animation.spins = 50;
+
+                                        // Disable the spin button so can't click again while wheel is spinning.
+                                        //document.getElementById('spin_button').src = "spin_off.png";
+                                        //document.getElementById('spin_button').className = "";
+
+                                        theWheel.animation.spins = 50;
+
+                                        // Begin the spin animation by calling startAnimation on the wheel object.
+                                        theWheel.startAnimation();
+
+                                        // Set to true so that power can't be changed and spin button re-enabled during
+                                        // the current animation. The user will have to reset before spinning again.
+                                        wheelSpinning = true;
+                                    }
+                                }
+
+                                // -------------------------------------------------------
+                                // Function for reset button.
+                                // -------------------------------------------------------
+                                function resetWheel() {
+                                    theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
+                                    theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
+                                    theWheel.draw();                // Call draw to render changes to the wheel.
+
+
+                                    wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
+                                }
+
+                                // -------------------------------------------------------
+                                // Called when the spin animation has finished by the callback feature of the wheel because I specified callback in the parameters.
+                                // -------------------------------------------------------
+                                function alertPrize(indicatedSegment) {
+                                    $("#btQuayNgay").css("display", "block");
+                                    // Just alert to the user what happened.
+                                    // In a real project probably want to do something more interesting than this with the result.
+                                    //alert("Bạn đã quay trúng ô \"" + indicatedSegment.text + "\"");
+                                    
+                                    //openTrungThuong(indicatedSegment.text);
+                                    //resetWheel();
+                                }
+                            </script>
+
+                        </div>
+                </div>
+            </section><!-- End Services Section -->
+
+        </main>
+    </div>
+    <footer class="footer-section">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <div class="row">
+                            <div class="col-lg-6" style="color:white; text-align:left">
+                                <div style="padding: 0px 15px;">
+                                    <p style="text-transform:uppercase">Công ty TNHH phần mềm XEP</p>
+                                    <p>Mã số thuế: 0313787000</p>
+
+                                    <p>Được cấp bởi Phòng đăng ký kinh doanh - Sở kế hoạch và đầu tư TP.HCM ngày 5 tháng 5 năm 2016</p>
+
+                                    <p>Email: hotro@xspin.vn</p>
+
+                                    <p>Duns Number: 556872988</p>
+
+                                    <p>Hotline-Zalo: 0915.660068</p>
+
+                                    <p>Phone: (028) 777 03 999 - (028) 66 797 666</p>
+
+                                    <p>Địa chỉ: Tòa nhà An Phú Plaza, 117 - 119 Lý Chính Thắng, Phường Võ Thị Sáu, Quận 3, Hồ Chí Minh</p>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-6">
+                                <div>
+                                    <a rel="nofollow"
+                                       target="_blank" href="http://online.gov.vn/Home/WebDetails/58158?AspxAutoDetectCookieSupport=1">
+                                        <img width="200" src="img/QSGOV.png" />
+                                    </a>
+
+                                    &nbsp;&nbsp;<a rel="nofollow" target="_blank" href="https://profiles.dunsregistered.com/DunsRegisteredProfileAnywhere.aspx?key1=3153282&PaArea=Email">
+                                        <img width="100" src="img/DunsXep.png" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p>© 2020 Thiết kế bởi <a href="https://xep.vn">Công ty phần mềm XEP</a>.</p>
+            </div>
+        </div>
+    </footer>
+    <!--<script src="assets/js/bootstrap.min.js"></script>-->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <!--<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js'></script>-->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js'>
+    </script>
+    <script src="Plugins/Congrats/script.js"></script>
+</body>
+</html>
