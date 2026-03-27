@@ -165,7 +165,8 @@ async function handleAuth(e) {
                 }, 1000);
             }
         } else {
-            showError('form-error', data.message || 'Đã xảy ra lỗi.');
+            const detailedError = data.error ? ` (${data.error})` : '';
+            showError('form-error', (data.message || 'Đã xảy ra lỗi.') + detailedError);
         }
     } catch (error) {
         console.error('Auth Error:', error);
@@ -259,7 +260,8 @@ async function processGoogleLoginBackend(email, name) {
                 window.location.href = isStaff ? 'admin.html' : 'index.html';
             }, 1000);
         } else {
-            showError('form-error', data.message || 'Authentication with server failed.');
+            const detailedError = data.error ? ` (${data.error})` : '';
+            showError('form-error', (data.message || 'Authentication with server failed.') + detailedError);
             resetGoogleButton();
         }
     } catch (err) {
